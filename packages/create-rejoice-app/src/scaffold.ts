@@ -18,7 +18,7 @@ async function isInsideWorkspace(dir: string): Promise<boolean> {
 }
 
 export async function scaffold(choices: UserChoices, targetDir: string): Promise<void> {
-  const { language, includeRouter, defaultTheme, projectName } = choices;
+  const { includeRouter, defaultTheme, projectName } = choices;
 
   // Warn if scaffolding inside a pnpm workspace — deps won't install correctly
   if (await isInsideWorkspace(targetDir)) {
@@ -41,8 +41,8 @@ export async function scaffold(choices: UserChoices, targetDir: string): Promise
   await fs.ensureDir(targetDir);
 
   // 2. Copy template
-  const templateDir = path.join(__dirname, "..", "templates", language);
-  logger.step(`Copying ${language.toUpperCase()} template...`);
+  const templateDir = path.join(__dirname, "..", "templates", "ts");
+  logger.step("Copying TypeScript template...");
   await fs.copy(templateDir, targetDir);
 
   // 3. Process package.json — inject project name + optional deps
@@ -56,17 +56,15 @@ export async function scaffold(choices: UserChoices, targetDir: string): Promise
   await fs.writeJson(pkgPath, pkg, { spaces: 2 });
 
   // 4. Replace vite.config placeholders
-  const viteConfigExt = language === "ts" ? "ts" : "js";
-  const viteConfigPath = path.join(targetDir, `vite.config.${viteConfigExt}`);
+  const viteConfigPath = path.join(targetDir, "vite.config.ts");
   if (await fs.pathExists(viteConfigPath)) {
     let viteConfig = await fs.readFile(viteConfigPath, "utf-8");
     viteConfig = viteConfig.replace("{{jsxImportSource}}", "rejoice-js");
     await fs.writeFile(viteConfigPath, viteConfig);
   }
 
-  // 5. Replace main.tsx/main.jsx placeholders
-  const mainExt = language === "ts" ? "tsx" : "jsx";
-  const mainPath = path.join(targetDir, "src", `main.${mainExt}`);
+  // 5. Replace main.tsx placeholders
+  const mainPath = path.join(targetDir, "src", "main.tsx");
   if (await fs.pathExists(mainPath)) {
     let mainContent = await fs.readFile(mainPath, "utf-8");
     mainContent = mainContent.replace("{{defaultTheme}}", defaultTheme);
@@ -77,7 +75,6 @@ export async function scaffold(choices: UserChoices, targetDir: string): Promise
   if (!includeRouter) {
     const routerFiles = [
       path.join(targetDir, "src", "router.tsx"),
-      path.join(targetDir, "src", "router.jsx"),
       path.join(targetDir, "src", "pages"),
     ];
     for (const f of routerFiles) {

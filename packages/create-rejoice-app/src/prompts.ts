@@ -3,7 +3,6 @@ import { validateProjectName } from "./validate.js";
 
 export interface UserChoices {
   projectName: string;
-  language: "ts";
   includeRouter: boolean;
   defaultTheme: "light" | "dark";
   packageManager: "pnpm" | "npm" | "yarn";
@@ -75,7 +74,6 @@ export async function gatherChoices(nameFromArg?: string): Promise<UserChoices> 
 
   return {
     projectName: nameFromArg ?? answers.projectName,
-    language: "ts",
     includeRouter: answers.includeRouter ?? true,
     defaultTheme: answers.defaultTheme ?? "light",
     packageManager: answers.packageManager ?? "pnpm",
