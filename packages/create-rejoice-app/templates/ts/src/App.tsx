@@ -1,5 +1,8 @@
 import { useTheme, Progress, createGlobalStyle } from "rejoice-js";
 import { useAppStore } from "./store/appStore";
+import claudeLogo from "../public/logos/claude.svg";
+import codexLogo from "../public/logos/codex.svg";
+import geminiLogo from "../public/logos/gemini.png";
 import {
   LayoutGrid,
   Paintbrush,
@@ -102,8 +105,8 @@ const features = [
   {
     icon: <Zap size={20} strokeWidth={1.8} />,
     color: "#10b981",
-    title: "Zero-config JSX",
-    desc: "No import React needed. jsxImportSource is wired so you write components, not boilerplate.",
+    title: "Bun official bundler",
+    desc: "Superfast dev and production builds powered by Bun's HTML-entry bundler. No Vite config, no extra glue.",
   },
   {
     icon: <ShieldCheck size={20} strokeWidth={1.8} />,
@@ -117,14 +120,14 @@ const features = [
 
 const agents = [
   {
-    src: "/logos/claude.svg",
+    src: claudeLogo,
     alt: "Claude Code",
     name: "Claude Code",
     maker: "Anthropic",
     bg: "transparent",
   },
   {
-    src: "/logos/codex.svg",
+    src: codexLogo,
     alt: "Codex CLI",
     name: "Codex CLI",
     maker: "OpenAI",
@@ -132,7 +135,7 @@ const agents = [
     pad: 9,
   },
   {
-    src: "/logos/gemini.png",
+    src: geminiLogo,
     alt: "Gemini CLI",
     name: "Gemini CLI",
     maker: "Google",
@@ -213,7 +216,7 @@ const App = () => {
         <SectionWrap $center>
           <SectionEyebrow>The stack</SectionEyebrow>
           <SectionHeading>Why rejoice?</SectionHeading>
-          <SectionSub>Everything wired. Nothing to configure.</SectionSub>
+          <SectionSub>Everything wired. Bun-powered and ready to ship.</SectionSub>
 
           <FeaturesGrid>
             {features.map((f, i) => (
@@ -235,7 +238,7 @@ const App = () => {
           <SectionSub>
             A known, stable surface — no setup debates, no conflicting patterns.
             <br />
-            Faster results with every major AI coding tool.
+            Faster results with every major AI coding tool and Bun-backed builds.
           </SectionSub>
 
           <AgentsRow>
@@ -261,7 +264,7 @@ const App = () => {
         <Footer>
           <FooterInner>
             <span>
-              Edit <code>src/App.tsx</code> to start building.
+              Edit <code>src/App.tsx</code> and run <code>bun dev</code> to start building.
             </span>
             <FooterLinks>
               <FooterLink href="https://ant.design" target="_blank" rel="noreferrer">
@@ -275,6 +278,9 @@ const App = () => {
               </FooterLink>
               <FooterLink href="https://lucide.dev" target="_blank" rel="noreferrer">
                 Lucide
+              </FooterLink>
+              <FooterLink href="https://bun.sh" target="_blank" rel="noreferrer">
+                Bun
               </FooterLink>
             </FooterLinks>
           </FooterInner>

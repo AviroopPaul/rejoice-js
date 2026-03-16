@@ -2,34 +2,13 @@ import path from "path";
 import fs from "fs-extra";
 import { execSync } from "child_process";
 import { fileURLToPath } from "url";
-import chalk from "chalk";
 import type { UserChoices } from "./prompts.js";
 import { logger } from "./logger.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-async function isInsideWorkspace(dir: string): Promise<boolean> {
-  let current = path.dirname(dir);
-  while (current !== path.dirname(current)) {
-    if (await fs.pathExists(path.join(current, "pnpm-workspace.yaml"))) return true;
-    current = path.dirname(current);
-  }
-  return false;
-}
-
 export async function scaffold(choices: UserChoices, targetDir: string): Promise<void> {
   const { includeRouter, defaultTheme, projectName } = choices;
-
-  // Warn if scaffolding inside a pnpm workspace — deps won't install correctly
-  if (await isInsideWorkspace(targetDir)) {
-    logger.warn(
-      "You are inside a pnpm workspace. Run " +
-        chalk.cyan(`pnpm install --ignore-workspace`) +
-        " inside the created app instead of plain " +
-        chalk.cyan("pnpm install") +
-        "."
-    );
-  }
 
   // 1. Ensure target directory exists and is empty
   if (await fs.pathExists(targetDir)) {
@@ -55,15 +34,7 @@ export async function scaffold(choices: UserChoices, targetDir: string): Promise
   }
   await fs.writeJson(pkgPath, pkg, { spaces: 2 });
 
-  // 4. Replace vite.config placeholders
-  const viteConfigPath = path.join(targetDir, "vite.config.ts");
-  if (await fs.pathExists(viteConfigPath)) {
-    let viteConfig = await fs.readFile(viteConfigPath, "utf-8");
-    viteConfig = viteConfig.replace("{{jsxImportSource}}", "rejoice-js");
-    await fs.writeFile(viteConfigPath, viteConfig);
-  }
-
-  // 5. Replace main.tsx placeholders
+  // 4. Replace main.tsx placeholders
   const mainPath = path.join(targetDir, "src", "main.tsx");
   if (await fs.pathExists(mainPath)) {
     let mainContent = await fs.readFile(mainPath, "utf-8");
@@ -71,7 +42,7 @@ export async function scaffold(choices: UserChoices, targetDir: string): Promise
     await fs.writeFile(mainPath, mainContent);
   }
 
-  // 6. Remove router files if not selected
+  // 5. Remove router files if not selected
   if (!includeRouter) {
     const routerFiles = [
       path.join(targetDir, "src", "router.tsx"),
@@ -84,7 +55,7 @@ export async function scaffold(choices: UserChoices, targetDir: string): Promise
 
   logger.success("Template files created.");
 
-  // 7. Git init
+  // 6. Git init
   if (choices.initGit) {
     logger.step("Initializing git repository...");
     try {

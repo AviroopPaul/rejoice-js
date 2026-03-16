@@ -36,12 +36,8 @@ async function main() {
     console.log();
     console.log("Next steps:");
     console.log(chalk.cyan(`  cd ${choices.projectName}`));
-    const installCmd =
-      choices.packageManager === "npm" ? "npm install" : `${choices.packageManager} install`;
-    const devCmd =
-      choices.packageManager === "npm" ? "npm run dev" : `${choices.packageManager} dev`;
-    console.log(chalk.cyan(`  ${installCmd}`));
-    console.log(chalk.cyan(`  ${devCmd}`));
+    console.log(chalk.cyan("  bun install"));
+    console.log(chalk.cyan("  bun dev"));
     console.log();
     console.log(chalk.dim(`Edit ${chalk.reset("src/App.tsx")} to start building.`));
     console.log();
