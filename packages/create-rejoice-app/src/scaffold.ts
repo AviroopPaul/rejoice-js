@@ -42,7 +42,14 @@ export async function scaffold(choices: UserChoices, targetDir: string): Promise
     await fs.writeFile(mainPath, mainContent);
   }
 
-  // 5. Remove router files if not selected
+  // 5. Restore dotfiles that npm strips from packaged templates.
+  const gitignorePath = path.join(targetDir, "gitignore");
+  const dotGitignorePath = path.join(targetDir, ".gitignore");
+  if (await fs.pathExists(gitignorePath)) {
+    await fs.move(gitignorePath, dotGitignorePath, { overwrite: true });
+  }
+
+  // 6. Remove router files if not selected
   if (!includeRouter) {
     const routerFiles = [
       path.join(targetDir, "src", "router.tsx"),
@@ -55,7 +62,7 @@ export async function scaffold(choices: UserChoices, targetDir: string): Promise
 
   logger.success("Template files created.");
 
-  // 6. Git init
+  // 7. Git init
   if (choices.initGit) {
     logger.step("Initializing git repository...");
     try {
