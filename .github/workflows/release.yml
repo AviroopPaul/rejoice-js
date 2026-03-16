@@ -64,12 +64,12 @@ jobs:
       - name: Publish rejoice-js
         if: steps.published.outputs.rejoice_exists == 'false'
         working-directory: packages/rejoice
-        run: npm publish --access public
+        run: npm publish --access public --provenance
 
       - name: Publish create-rejoice-app
         if: steps.published.outputs.create_exists == 'false'
         working-directory: packages/create-rejoice-app
-        run: npm publish --access public
+        run: npm publish --access public --provenance
 
       - name: Commit release version bump
         run: |
