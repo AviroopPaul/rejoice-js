@@ -1,6 +1,7 @@
 {
   "name": "rejoice-js",
   "version": "0.1.0",
+  "description": "A batteries-included React package that re-exports React with Ant Design, styled-components, Zustand, and built-in theme utilities.",
   "type": "module",
   "scripts": {
     "build": "tsup",
@@ -27,7 +28,25 @@
       "types": "./dist/jsx-dev-runtime.d.ts"
     }
   },
-  "files": ["dist"],
+  "files": ["dist", "README.md"],
+  "keywords": [
+    "react",
+    "antd",
+    "styled-components",
+    "zustand",
+    "theme",
+    "design-system"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AviroopPaul/rejoice-js.git",
+    "directory": "packages/rejoice"
+  },
+  "homepage": "https://github.com/AviroopPaul/rejoice-js#readme",
+  "bugs": {
+    "url": "https://github.com/AviroopPaul/rejoice-js/issues"
+  },
+  "license": "MIT",
   "peerDependencies": { "react": "^18.0.0", "react-dom": "^18.0.0" },
   "dependencies": {
     "antd": "^5.17.0",
