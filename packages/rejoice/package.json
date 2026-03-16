@@ -28,7 +28,10 @@
       "types": "./dist/jsx-dev-runtime.d.ts"
     }
   },
-  "files": ["dist", "README.md"],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "keywords": [
     "react",
     "antd",
@@ -47,7 +50,10 @@
     "url": "https://github.com/AviroopPaul/rejoice-js/issues"
   },
   "license": "MIT",
-  "peerDependencies": { "react": "^18.0.0", "react-dom": "^18.0.0" },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
   "dependencies": {
     "antd": "^5.17.0",
     "styled-components": "^6.1.0",

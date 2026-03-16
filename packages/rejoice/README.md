@@ -31,9 +31,7 @@ function App() {
 
   return (
     <Box>
-      <Button onClick={toggleTheme}>
-        {isDarkMode ? "Switch to light" : "Switch to dark"}
-      </Button>
+      <Button onClick={toggleTheme}>{isDarkMode ? "Switch to light" : "Switch to dark"}</Button>
     </Box>
   );
 }

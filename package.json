@@ -4,11 +4,23 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
-    "clean": "turbo run clean"
+    "clean": "turbo run clean",
+    "lint": "eslint \"packages/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint --fix \"packages/**/*.{ts,tsx}\"",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run lint && npm run format:check",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.0.3",
+    "globals": "^17.4.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.8.1",
     "turbo": "^2.0.0",
+    "typescript-eslint": "^8.57.0",
     "typescript": "^5.4.0"
   },
   "packageManager": "pnpm@9.0.0"

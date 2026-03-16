@@ -12,21 +12,21 @@ pnpm install && pnpm dev
 
 ## What's included
 
-| | |
-|---|---|
-| [Ant Design 5](https://ant.design) | 50+ production-ready UI components, dark mode aware |
-| [styled-components](https://styled-components.com) | CSS-in-JS with full theme token access |
-| [Zustand](https://zustand-demo.pmnd.rs) | Minimal global state — no providers, no reducers |
-| [Lucide Icons](https://lucide.dev) | 500+ crisp SVG icons as React components |
-| Dark mode | Persistent via localStorage, toggle out of the box |
-| Zero-config JSX | No `import React` needed anywhere |
+|                                                    |                                                     |
+| -------------------------------------------------- | --------------------------------------------------- |
+| [Ant Design 5](https://ant.design)                 | 50+ production-ready UI components, dark mode aware |
+| [styled-components](https://styled-components.com) | CSS-in-JS with full theme token access              |
+| [Zustand](https://zustand-demo.pmnd.rs)            | Minimal global state — no providers, no reducers    |
+| [Lucide Icons](https://lucide.dev)                 | 500+ crisp SVG icons as React components            |
+| Dark mode                                          | Persistent via localStorage, toggle out of the box  |
+| Zero-config JSX                                    | No `import React` needed anywhere                   |
 
 ## Packages
 
-| Package | Description |
-|---|---|
-| [`rejoice-js`](./packages/rejoice) | Core library — re-exports all batteries |
-| [`create-rejoice-app`](./packages/create-rejoice-app) | CLI scaffolder |
+| Package                                               | Description                             |
+| ----------------------------------------------------- | --------------------------------------- |
+| [`rejoice-js`](./packages/rejoice)                    | Core library — re-exports all batteries |
+| [`create-rejoice-app`](./packages/create-rejoice-app) | CLI scaffolder                          |
 
 ## Usage
 
@@ -42,7 +42,7 @@ npx create-rejoice-app          # interactive prompts
 
 ```tsx
 // No import React needed
-import { Button, useTheme, styled, create } from 'rejoice-js';
+import { Button, useTheme, styled, create } from "rejoice-js";
 
 const Box = styled.div`
   background: ${({ theme }) => theme.colors.surface};
@@ -61,7 +61,7 @@ export default function App() {
   return (
     <Box>
       <Button onClick={inc}>Count: {count}</Button>
-      <Button onClick={toggleTheme}>{isDarkMode ? 'Light' : 'Dark'}</Button>
+      <Button onClick={toggleTheme}>{isDarkMode ? "Light" : "Dark"}</Button>
     </Box>
   );
 }
@@ -70,9 +70,9 @@ export default function App() {
 ### Wrapping your app
 
 ```tsx
-import { createRoot, RejoiceProvider } from 'rejoice-js';
+import { createRoot, RejoiceProvider } from "rejoice-js";
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <RejoiceProvider defaultTheme="light">
     <App />
   </RejoiceProvider>
