@@ -21,8 +21,14 @@ export const PageWrapper = styled.div`
   color: ${({ theme }) => theme.colors.text};
   display: flex;
   flex-direction: column;
-  font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
-  transition: background 0.3s ease, color 0.3s ease;
+  font-family:
+    "Geist",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 `;
 
 // ── Header ────────────────────────────────────────────────────────────────────
@@ -37,10 +43,11 @@ export const Header = styled.header`
   z-index: 100;
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
   backdrop-filter: blur(12px);
-  background: ${({ theme }) =>
-    theme.isDark ? "rgba(20,20,20,0.88)" : "rgba(255,255,255,0.88)"};
+  background: ${({ theme }) => (theme.isDark ? "rgba(20,20,20,0.88)" : "rgba(255,255,255,0.88)")};
 
-  @media (max-width: 640px) { padding: 14px 20px; }
+  @media (max-width: 640px) {
+    padding: 14px 20px;
+  }
 `;
 
 export const Brand = styled.div`
@@ -50,7 +57,7 @@ export const Brand = styled.div`
 `;
 
 export const BrandName = styled.span`
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 17px;
   font-weight: 600;
   letter-spacing: -0.3px;
@@ -59,9 +66,11 @@ export const BrandName = styled.span`
 
 export const BrandTagline = styled.span`
   font-size: 12px;
-  color: ${({ theme }) => theme.isDark ? "rgba(255,255,255,0.35)" : "rgba(0,0,0,0.35)"};
+  color: ${({ theme }) => (theme.isDark ? "rgba(255,255,255,0.35)" : "rgba(0,0,0,0.35)")};
 
-  @media (max-width: 480px) { display: none; }
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
 export const ThemeToggle = styled.button`
@@ -73,12 +82,14 @@ export const ThemeToggle = styled.button`
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.colors.border};
   background: transparent;
-  color: ${({ theme }) => theme.isDark ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.5)"};
+  color: ${({ theme }) => (theme.isDark ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.5)")};
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s;
 
   &:hover {
-    background: ${({ theme }) => theme.isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.06)"};
+    background: ${({ theme }) => (theme.isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.06)")};
     color: ${({ theme }) => theme.colors.text};
   }
 `;
@@ -113,17 +124,17 @@ export const HeroInner = styled.div`
 `;
 
 export const HeroLabel = styled.p`
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.3)"};
+  color: ${({ theme }) => (theme.isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.3)")};
   margin: 0 0 16px;
 `;
 
 export const HeroTitle = styled.h1`
-  font-family: 'DM Serif Display', Georgia, serif;
+  font-family: "DM Serif Display", Georgia, serif;
   font-size: clamp(36px, 6vw, 56px);
   font-weight: 400;
   line-height: 1.1;
@@ -135,7 +146,7 @@ export const HeroTitle = styled.h1`
 export const HeroSub = styled.p`
   font-size: 15px;
   line-height: 1.6;
-  color: ${({ theme }) => theme.isDark ? "rgba(255,255,255,0.45)" : "rgba(0,0,0,0.45)"};
+  color: ${({ theme }) => (theme.isDark ? "rgba(255,255,255,0.45)" : "rgba(0,0,0,0.45)")};
   margin: 0 0 40px;
 `;
 
@@ -166,7 +177,7 @@ export const HappinessIconWrap = styled.div<{ $color: string }>`
 `;
 
 export const HappinessValue = styled.div<{ $color: string }>`
-  font-family: 'DM Serif Display', Georgia, serif;
+  font-family: "DM Serif Display", Georgia, serif;
   font-size: 64px;
   font-weight: 400;
   line-height: 1;
@@ -182,12 +193,12 @@ export const HappinessValue = styled.div<{ $color: string }>`
 `;
 
 export const HappinessMeta = styled.p`
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.3)"};
+  color: ${({ theme }) => (theme.isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.3)")};
   margin: 2px 0 0;
 `;
 
@@ -195,8 +206,14 @@ export const ProgressWrap = styled.div`
   width: 100%;
   margin: 20px 0 4px;
 
-  .ant-progress-line { margin: 0; }
-  .ant-progress-bg { transition: width 0.3s ease, background-color 0.4s ease !important; }
+  .ant-progress-line {
+    margin: 0;
+  }
+  .ant-progress-bg {
+    transition:
+      width 0.3s ease,
+      background-color 0.4s ease !important;
+  }
 `;
 
 export const Controls = styled.div`
@@ -211,25 +228,27 @@ export const CounterBtn = styled.button<{ $primary?: boolean; disabled?: boolean
   gap: 7px;
   padding: 10px 20px;
   border-radius: 10px;
-  font-family: 'Geist', sans-serif;
+  font-family: "Geist", sans-serif;
   font-size: 14px;
   font-weight: 500;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-  border: 1px solid ${({ theme, $primary }) =>
-    $primary ? "transparent" : theme.colors.border};
-  background: ${({ theme, $primary }) =>
-    $primary ? theme.colors.primary : "transparent"};
-  color: ${({ theme, $primary }) =>
-    $primary ? "#fff" : theme.colors.text};
+  border: 1px solid ${({ theme, $primary }) => ($primary ? "transparent" : theme.colors.border)};
+  background: ${({ theme, $primary }) => ($primary ? theme.colors.primary : "transparent")};
+  color: ${({ theme, $primary }) => ($primary ? "#fff" : theme.colors.text)};
   opacity: ${({ disabled }) => (disabled ? 0.4 : 1)};
-  transition: opacity 0.15s, transform 0.12s, box-shadow 0.12s;
+  transition:
+    opacity 0.15s,
+    transform 0.12s,
+    box-shadow 0.12s;
 
   &:hover:not(:disabled) {
     transform: translateY(-1px);
     box-shadow: ${({ $primary }) =>
       $primary ? "0 4px 16px rgba(22,119,255,0.35)" : "0 4px 12px rgba(0,0,0,0.1)"};
   }
-  &:active:not(:disabled) { transform: translateY(0); }
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
 `;
 
 // ── Divider ───────────────────────────────────────────────────────────────────
@@ -249,11 +268,13 @@ export const SectionWrap = styled.section<{ $center?: boolean }>`
   width: 100%;
   text-align: ${({ $center }) => ($center ? "center" : "left")};
 
-  @media (max-width: 640px) { padding: 56px 20px; }
+  @media (max-width: 640px) {
+    padding: 56px 20px;
+  }
 `;
 
 export const SectionEyebrow = styled.p`
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 1.5px;
@@ -263,7 +284,7 @@ export const SectionEyebrow = styled.p`
 `;
 
 export const SectionHeading = styled.h2`
-  font-family: 'DM Serif Display', Georgia, serif;
+  font-family: "DM Serif Display", Georgia, serif;
   font-size: clamp(28px, 4vw, 42px);
   font-weight: 400;
   line-height: 1.15;
@@ -275,7 +296,7 @@ export const SectionHeading = styled.h2`
 export const SectionSub = styled.p`
   font-size: 15px;
   line-height: 1.65;
-  color: ${({ theme }) => theme.isDark ? "rgba(255,255,255,0.45)" : "rgba(0,0,0,0.45)"};
+  color: ${({ theme }) => (theme.isDark ? "rgba(255,255,255,0.45)" : "rgba(0,0,0,0.45)")};
   margin: 0 auto 48px;
   max-width: 520px;
   text-align: center;
@@ -292,8 +313,12 @@ export const FeaturesGrid = styled.div`
   overflow: hidden;
   text-align: left;
 
-  @media (max-width: 720px) { grid-template-columns: repeat(2, 1fr); }
-  @media (max-width: 480px) { grid-template-columns: 1fr; }
+  @media (max-width: 720px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const FeatureCard = styled.div<{ $delay?: number }>`
@@ -305,16 +330,18 @@ export const FeatureCard = styled.div<{ $delay?: number }>`
   border-right: 1px solid ${({ theme }) => theme.colors.border};
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
   animation: ${fadeUp} 0.5s ease both;
-  animation-delay: ${({ $delay }) => ($delay ?? 0)}ms;
+  animation-delay: ${({ $delay }) => $delay ?? 0}ms;
   transition: background 0.2s ease;
   position: relative;
   overflow: hidden;
 
   /* accent line on top that appears on hover */
   &::before {
-    content: '';
+    content: "";
     position: absolute;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 2px;
     background: ${({ theme }) => theme.colors.primary};
     transform: scaleX(0);
@@ -322,20 +349,29 @@ export const FeatureCard = styled.div<{ $delay?: number }>`
     transition: transform 0.25s ease;
   }
 
-  &:hover::before { transform: scaleX(1); }
+  &:hover::before {
+    transform: scaleX(1);
+  }
   &:hover {
-    background: ${({ theme }) =>
-      theme.isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.015)"};
+    background: ${({ theme }) => (theme.isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.015)")};
   }
 
   /* remove double borders at grid edges */
-  &:nth-child(4n) { border-right: none; }
+  &:nth-child(4n) {
+    border-right: none;
+  }
   @media (max-width: 960px) {
-    &:nth-child(4n) { border-right: 1px solid ${({ theme }) => theme.colors.border}; }
-    &:nth-child(2n) { border-right: none; }
+    &:nth-child(4n) {
+      border-right: 1px solid ${({ theme }) => theme.colors.border};
+    }
+    &:nth-child(2n) {
+      border-right: none;
+    }
   }
   @media (max-width: 520px) {
-    &:nth-child(n) { border-right: none; }
+    &:nth-child(n) {
+      border-right: none;
+    }
   }
 `;
 
@@ -363,7 +399,7 @@ export const FeatureDesc = styled.p`
   font-size: 13px;
   line-height: 1.65;
   margin: 0;
-  color: ${({ theme }) => theme.isDark ? "rgba(255,255,255,0.45)" : "rgba(0,0,0,0.45)"};
+  color: ${({ theme }) => (theme.isDark ? "rgba(255,255,255,0.45)" : "rgba(0,0,0,0.45)")};
 `;
 
 // ── Agents ────────────────────────────────────────────────────────────────────
@@ -383,7 +419,9 @@ export const AgentPill = styled.div`
   border-radius: 100px;
   border: 1px solid ${({ theme }) => theme.colors.border};
   background: ${({ theme }) => theme.colors.surface};
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
 
   &:hover {
     transform: translateY(-2px);
@@ -427,7 +465,7 @@ export const AgentName = styled.span`
 
 export const AgentMaker = styled.span`
   font-size: 12px;
-  color: ${({ theme }) => theme.isDark ? "rgba(255,255,255,0.35)" : "rgba(0,0,0,0.35)"};
+  color: ${({ theme }) => (theme.isDark ? "rgba(255,255,255,0.35)" : "rgba(0,0,0,0.35)")};
 `;
 
 // ── Footer ────────────────────────────────────────────────────────────────────
@@ -437,7 +475,9 @@ export const Footer = styled.footer`
   margin-top: auto;
   padding: 24px 48px;
 
-  @media (max-width: 640px) { padding: 20px; }
+  @media (max-width: 640px) {
+    padding: 20px;
+  }
 `;
 
 export const FooterInner = styled.div`
@@ -447,12 +487,12 @@ export const FooterInner = styled.div`
   gap: 16px;
   flex-wrap: wrap;
   font-size: 12.5px;
-  color: ${({ theme }) => theme.isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.3)"};
+  color: ${({ theme }) => (theme.isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.3)")};
 
   code {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     font-size: 11.5px;
-    background: ${({ theme }) => theme.isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.06)"};
+    background: ${({ theme }) => (theme.isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.06)")};
     padding: 2px 6px;
     border-radius: 4px;
   }
@@ -465,11 +505,11 @@ export const FooterLinks = styled.div`
 
 export const FooterLink = styled.a`
   font-size: 12.5px;
-  color: ${({ theme }) => theme.isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.3)"};
+  color: ${({ theme }) => (theme.isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.3)")};
   text-decoration: none;
   transition: color 0.15s;
 
   &:hover {
-    color: ${({ theme }) => theme.isDark ? "rgba(255,255,255,0.7)" : "rgba(0,0,0,0.7)"};
+    color: ${({ theme }) => (theme.isDark ? "rgba(255,255,255,0.7)" : "rgba(0,0,0,0.7)")};
   }
 `;

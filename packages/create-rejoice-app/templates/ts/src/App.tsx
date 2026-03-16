@@ -1,19 +1,58 @@
 import { useTheme, Progress, createGlobalStyle } from "rejoice-js";
 import { useAppStore } from "./store/appStore";
 import {
-  LayoutGrid, Paintbrush, Boxes, Sparkles, Zap,
-  ShieldCheck, Smile, Laugh, Meh, Frown, TrendingDown, TrendingUp,
-  Sun, Moon,
+  LayoutGrid,
+  Paintbrush,
+  Boxes,
+  Sparkles,
+  Zap,
+  ShieldCheck,
+  Smile,
+  Laugh,
+  Meh,
+  Frown,
+  TrendingDown,
+  TrendingUp,
+  Sun,
+  Moon,
 } from "lucide-react";
 import {
-  PageWrapper, Header, Brand, BrandName, ThemeToggle,
-  HeroSection, HeroInner, HeroTitle,
-  CounterBlock, HappinessIconWrap, HappinessValue, HappinessMeta,
-  ProgressWrap, Controls, CounterBtn,
-  SectionWrap, SectionEyebrow, SectionHeading, SectionSub,
-  FeaturesGrid, FeatureCard, FeatureIconWrap, FeatureTitle, FeatureDesc,
-  AgentsRow, AgentPill, AgentLogoWrap, AgentLogoImg, AgentInfo, AgentName, AgentMaker,
-  Divider, Footer, FooterInner, FooterLinks, FooterLink,
+  PageWrapper,
+  Header,
+  Brand,
+  BrandName,
+  ThemeToggle,
+  HeroSection,
+  HeroInner,
+  HeroTitle,
+  CounterBlock,
+  HappinessIconWrap,
+  HappinessValue,
+  HappinessMeta,
+  ProgressWrap,
+  Controls,
+  CounterBtn,
+  SectionWrap,
+  SectionEyebrow,
+  SectionHeading,
+  SectionSub,
+  FeaturesGrid,
+  FeatureCard,
+  FeatureIconWrap,
+  FeatureTitle,
+  FeatureDesc,
+  AgentsRow,
+  AgentPill,
+  AgentLogoWrap,
+  AgentLogoImg,
+  AgentInfo,
+  AgentName,
+  AgentMaker,
+  Divider,
+  Footer,
+  FooterInner,
+  FooterLinks,
+  FooterLink,
 } from "./App.styles";
 
 // ── Google Fonts ──────────────────────────────────────────────────────────────
@@ -25,10 +64,12 @@ const GlobalFonts = createGlobalStyle`
 // ── Happiness icon + color ────────────────────────────────────────────────────
 
 const getHappinessVisual = (n: number) => {
-  if (n >= 80) return { icon: <Laugh size={52} strokeWidth={1.5} />, color: "#10b981", label: "Thriving" };
-  if (n >= 50) return { icon: <Smile size={52} strokeWidth={1.5} />, color: "#1677ff", label: "Good" };
-  if (n >= 20) return { icon: <Meh   size={52} strokeWidth={1.5} />, color: "#f59e0b", label: "Meh" };
-  return          { icon: <Frown size={52} strokeWidth={1.5} />, color: "#ef4444", label: "Rough" };
+  if (n >= 80)
+    return { icon: <Laugh size={52} strokeWidth={1.5} />, color: "#10b981", label: "Thriving" };
+  if (n >= 50)
+    return { icon: <Smile size={52} strokeWidth={1.5} />, color: "#1677ff", label: "Good" };
+  if (n >= 20) return { icon: <Meh size={52} strokeWidth={1.5} />, color: "#f59e0b", label: "Meh" };
+  return { icon: <Frown size={52} strokeWidth={1.5} />, color: "#ef4444", label: "Rough" };
 };
 
 // ── Feature list ──────────────────────────────────────────────────────────────
@@ -75,9 +116,28 @@ const features = [
 // ── Agents ────────────────────────────────────────────────────────────────────
 
 const agents = [
-  { src: "/logos/claude.svg",  alt: "Claude Code", name: "Claude Code", maker: "Anthropic", bg: "transparent" },
-  { src: "/logos/codex.svg",   alt: "Codex CLI",   name: "Codex CLI",   maker: "OpenAI",    bg: "#000",        pad: 9 },
-  { src: "/logos/gemini.png",  alt: "Gemini CLI",  name: "Gemini CLI",  maker: "Google",    bg: "transparent" },
+  {
+    src: "/logos/claude.svg",
+    alt: "Claude Code",
+    name: "Claude Code",
+    maker: "Anthropic",
+    bg: "transparent",
+  },
+  {
+    src: "/logos/codex.svg",
+    alt: "Codex CLI",
+    name: "Codex CLI",
+    maker: "OpenAI",
+    bg: "#000",
+    pad: 9,
+  },
+  {
+    src: "/logos/gemini.png",
+    alt: "Gemini CLI",
+    name: "Gemini CLI",
+    maker: "Google",
+    bg: "transparent",
+  },
 ];
 
 // ── App ───────────────────────────────────────────────────────────────────────
@@ -92,25 +152,35 @@ const App = () => {
     <>
       <GlobalFonts />
       <PageWrapper>
-
         {/* ── Header ── */}
         <Header>
           <Brand>
             <BrandName>rejoice</BrandName>
           </Brand>
           <ThemeToggle onClick={toggleTheme}>
-            {isDarkMode ? <Sun size={16} strokeWidth={1.8} /> : <Moon size={16} strokeWidth={1.8} />}
+            {isDarkMode ? (
+              <Sun size={16} strokeWidth={1.8} />
+            ) : (
+              <Moon size={16} strokeWidth={1.8} />
+            )}
           </ThemeToggle>
         </Header>
 
         {/* ── Hero ── */}
         <HeroSection>
           <HeroInner>
-            <HeroTitle>How happy is<br />your codebase?</HeroTitle>
+            <HeroTitle>
+              How happy is
+              <br />
+              your codebase?
+            </HeroTitle>
 
             <CounterBlock>
               <HappinessIconWrap $color={color}>{icon}</HappinessIconWrap>
-              <HappinessValue $color={color}>{happiness}<span>%</span></HappinessValue>
+              <HappinessValue $color={color}>
+                {happiness}
+                <span>%</span>
+              </HappinessValue>
               <HappinessMeta>{label}</HappinessMeta>
 
               <ProgressWrap>
@@ -163,7 +233,8 @@ const App = () => {
           <SectionEyebrow>Compatibility</SectionEyebrow>
           <SectionHeading>Built for coding agents</SectionHeading>
           <SectionSub>
-            A known, stable surface — no setup debates, no conflicting patterns.<br />
+            A known, stable surface — no setup debates, no conflicting patterns.
+            <br />
             Faster results with every major AI coding tool.
           </SectionSub>
 
@@ -189,16 +260,25 @@ const App = () => {
         {/* ── Footer ── */}
         <Footer>
           <FooterInner>
-            <span>Edit <code>src/App.tsx</code> to start building.</span>
+            <span>
+              Edit <code>src/App.tsx</code> to start building.
+            </span>
             <FooterLinks>
-              <FooterLink href="https://ant.design" target="_blank" rel="noreferrer">Ant Design</FooterLink>
-              <FooterLink href="https://styled-components.com" target="_blank" rel="noreferrer">styled-components</FooterLink>
-              <FooterLink href="https://zustand-demo.pmnd.rs" target="_blank" rel="noreferrer">Zustand</FooterLink>
-              <FooterLink href="https://lucide.dev" target="_blank" rel="noreferrer">Lucide</FooterLink>
+              <FooterLink href="https://ant.design" target="_blank" rel="noreferrer">
+                Ant Design
+              </FooterLink>
+              <FooterLink href="https://styled-components.com" target="_blank" rel="noreferrer">
+                styled-components
+              </FooterLink>
+              <FooterLink href="https://zustand-demo.pmnd.rs" target="_blank" rel="noreferrer">
+                Zustand
+              </FooterLink>
+              <FooterLink href="https://lucide.dev" target="_blank" rel="noreferrer">
+                Lucide
+              </FooterLink>
             </FooterLinks>
           </FooterInner>
         </Footer>
-
       </PageWrapper>
     </>
   );

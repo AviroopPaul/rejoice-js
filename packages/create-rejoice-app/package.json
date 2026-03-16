@@ -8,8 +8,14 @@
     "dev": "tsup --watch",
     "clean": "rm -rf dist"
   },
-  "bin": { "create-rejoice-app": "./dist/index.js" },
-  "files": ["dist", "templates", "README.md"],
+  "bin": {
+    "create-rejoice-app": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "templates",
+    "README.md"
+  ],
   "keywords": [
     "react",
     "scaffold",
