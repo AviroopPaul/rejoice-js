@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  id-token: write
 
 jobs:
   release:
@@ -64,15 +65,11 @@ jobs:
         if: steps.published.outputs.rejoice_exists == 'false'
         working-directory: packages/rejoice
         run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish create-rejoice-app
         if: steps.published.outputs.create_exists == 'false'
         working-directory: packages/create-rejoice-app
         run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Commit release version bump
         run: |
