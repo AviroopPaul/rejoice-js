@@ -1,6 +1,7 @@
 {
   "name": "create-rejoice-app",
   "version": "0.1.0",
+  "description": "Scaffold a batteries-included React app powered by rejoice-js, Ant Design, styled-components, Zustand, and built-in theming.",
   "type": "module",
   "scripts": {
     "build": "tsup",
@@ -8,7 +9,26 @@
     "clean": "rm -rf dist"
   },
   "bin": { "create-rejoice-app": "./dist/index.js" },
-  "files": ["dist", "templates"],
+  "files": ["dist", "templates", "README.md"],
+  "keywords": [
+    "react",
+    "scaffold",
+    "cli",
+    "vite",
+    "antd",
+    "styled-components",
+    "zustand"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AviroopPaul/rejoice-js.git",
+    "directory": "packages/create-rejoice-app"
+  },
+  "homepage": "https://github.com/AviroopPaul/rejoice-js#readme",
+  "bugs": {
+    "url": "https://github.com/AviroopPaul/rejoice-js/issues"
+  },
+  "license": "MIT",
   "dependencies": {
     "chalk": "^5.3.0",
     "fs-extra": "^11.2.0",
