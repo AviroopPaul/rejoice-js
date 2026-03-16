@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rejoice — React, but set up already.</title>
+    <meta
+      name="description"
+      content="A batteries-included React stack for coding agents and developers. TypeScript, Ant Design, Zustand, Lucide Icons, and Bun — zero setup."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Nav -->
+    <nav class="nav">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">rejoice</a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1>React, but set up already.</h1>
+      <p class="hero-sub">
+        A batteries-included React stack that gives coding agents and developers a stable,
+        opinionated surface — so you ship features, not config.
+      </p>
+      <div class="install-block">
+        <div class="install-cmd" id="installCmd">
+          <span class="install-prompt">$</span>
+          <code>bunx create-rejoice-app your_app_name</code>
+        </div>
+        <button class="copy-btn" id="copyBtn" aria-label="Copy install command">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="9" y="9" width="13" height="13" rx="2" />
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+          </svg>
+          <span id="copyLabel">Copy</span>
+        </button>
+      </div>
+      <p class="hero-hint">
+        Requires <a href="https://bun.sh" target="_blank" rel="noopener">Bun</a> installed. That's
+        it.
+      </p>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features">
+      <h2>Everything you need. Nothing you don't.</h2>
+      <table class="features-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>What</th>
+            <th>Why</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="ft-logo">
+              <a href="https://www.typescriptlang.org" target="_blank" rel="noopener">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                  alt="TypeScript"
+                  width="28"
+                  height="28"
+                />
+              </a>
+            </td>
+            <td class="ft-what">TypeScript</td>
+            <td class="ft-why">
+              Full type safety out of the box. Zero-config JSX runtime — no
+              <code>import React</code> needed.
+            </td>
+          </tr>
+          <tr>
+            <td class="ft-logo">
+              <a href="https://ant.design" target="_blank" rel="noopener">
+                <img
+                  src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+                  alt="Ant Design"
+                  width="28"
+                  height="28"
+                />
+              </a>
+            </td>
+            <td class="ft-what">Ant Design 5</td>
+            <td class="ft-why">
+              24+ components pre-exported. Buttons, Forms, Modals, Tables, Layout — one import.
+            </td>
+          </tr>
+          <tr>
+            <td class="ft-logo">
+              <a href="https://zustand-demo.pmnd.rs" target="_blank" rel="noopener">
+                <img
+                  src="zustand.jpeg"
+                  alt="Zustand"
+                  width="28"
+                  height="28"
+                  style="border-radius: 50%"
+                />
+              </a>
+            </td>
+            <td class="ft-what">Zustand</td>
+            <td class="ft-why">
+              Lightweight state management with middleware. Built-in persistent theme store
+              included.
+            </td>
+          </tr>
+          <tr>
+            <td class="ft-logo">
+              <a href="https://lucide.dev" target="_blank" rel="noopener">
+                <img
+                  src="https://lucide.dev/logo.light.svg"
+                  alt="Lucide Icons"
+                  width="28"
+                  height="28"
+                />
+              </a>
+            </td>
+            <td class="ft-what">Lucide Icons</td>
+            <td class="ft-why">
+              Beautiful, consistent icon set. Tree-shakeable — only icons you use ship to
+              production.
+            </td>
+          </tr>
+          <tr>
+            <td class="ft-logo">
+              <a href="https://react.dev" target="_blank" rel="noopener">
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#a78bfa"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z" />
+                </svg>
+              </a>
+            </td>
+            <td class="ft-what">Dark Mode</td>
+            <td class="ft-why">
+              Light and dark themes built in. Persistent via localStorage. One hook to toggle.
+            </td>
+          </tr>
+          <tr>
+            <td class="ft-logo">
+              <a href="https://bun.sh" target="_blank" rel="noopener">
+                <img src="https://bun.sh/logo.svg" alt="Bun" width="28" height="28" />
+              </a>
+            </td>
+            <td class="ft-what">Bun Runtime</td>
+            <td class="ft-why">
+              Default bundler and runtime. Faster installs, faster builds, fewer moving parts.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Determinism / Agents -->
+    <section class="agents" id="agents">
+      <div class="agents-inner">
+        <div class="agents-text">
+          <h2>Built for coding agents.</h2>
+          <p>
+            When an AI agent scaffolds a new app, it shouldn't have to choose between Tailwind or
+            CSS Modules, Redux or Zustand, Webpack or Vite. Every choice is a coin flip that
+            compounds into drift.
+          </p>
+          <p>
+            <strong>rejoice eliminates that entropy.</strong> One package, one import, one set of
+            conventions. The agent always knows what's available, where it lives, and how to use it
+            — because the answer never changes.
+          </p>
+          <p>
+            That's <em>determinism</em>: a stable surface that makes AI-generated code predictable,
+            reviewable, and mergeable. No more "which UI library did the agent pick this time?"
+          </p>
+        </div>
+        <div class="agents-code">
+          <div class="code-window">
+            <div class="code-dots"><span></span><span></span><span></span></div>
+            <pre><code><span class="code-comment">// One import. Everything you need.</span>
+<span class="code-keyword">import</span> {
+  useState,
+  Button,
+  Card,
+  styled,
+  useTheme,
+  create,
+} <span class="code-keyword">from</span> <span class="code-string">"rejoice-js"</span>;
+
+<span class="code-keyword">const</span> <span class="code-fn">Counter</span> = () => {
+  <span class="code-keyword">const</span> [count, setCount] = <span class="code-fn">useState</span>(<span class="code-num">0</span>);
+  <span class="code-keyword">const</span> { isDarkMode } = <span class="code-fn">useTheme</span>();
+
+  <span class="code-keyword">return</span> (
+    &lt;<span class="code-tag">Card</span> <span class="code-attr">title</span>=<span class="code-string">"Counter"</span>&gt;
+      &lt;<span class="code-tag">Button</span> <span class="code-attr">onClick</span>={() => <span class="code-fn">setCount</span>(c => c + <span class="code-num">1</span>)}&gt;
+        {count}
+      &lt;/<span class="code-tag">Button</span>&gt;
+    &lt;/<span class="code-tag">Card</span>&gt;
+  );
+};</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <h2>Don't confuse your agent, let it rejoice.</h2>
+      <a href="#" class="scroll-top-btn">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M12 19V5" />
+          <path d="M5 12l7-7 7 7" />
+        </svg>
+        Back to top
+      </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-links">
+          <a href="https://github.com/AviroopPaul/rejoice-js" target="_blank" rel="noopener"
+            >GitHub</a
+          >
+          <span class="footer-sep">&middot;</span>
+          <a href="https://www.npmjs.com/package/rejoice-js" target="_blank" rel="noopener">npm</a>
+          <span class="footer-sep">&middot;</span>
+          <a href="https://www.npmjs.com/package/create-rejoice-app" target="_blank" rel="noopener"
+            >create-rejoice-app</a
+          >
+        </div>
+        <p>
+          Made by
+          <a href="https://github.com/AviroopPaul" target="_blank" rel="noopener">Aviroop</a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
