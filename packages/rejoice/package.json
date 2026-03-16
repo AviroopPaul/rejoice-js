@@ -1,6 +1,6 @@
 {
   "name": "rejoice-js",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A batteries-included React package that re-exports React with Ant Design, styled-components, Zustand, and built-in theme utilities.",
   "type": "module",
   "scripts": {
