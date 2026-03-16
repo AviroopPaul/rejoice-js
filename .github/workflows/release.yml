@@ -30,9 +30,7 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-
-      - name: Configure npm registry
-        run: npm config set registry https://registry.npmjs.org/
+          registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -66,12 +64,12 @@ jobs:
       - name: Publish rejoice-js
         if: steps.published.outputs.rejoice_exists == 'false'
         working-directory: packages/rejoice
-        run: npm publish --access public --provenance
+        run: npm publish --access public
 
       - name: Publish create-rejoice-app
         if: steps.published.outputs.create_exists == 'false'
         working-directory: packages/create-rejoice-app
-        run: npm publish --access public --provenance
+        run: npm publish --access public
 
       - name: Commit release version bump
         run: |
