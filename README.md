@@ -2,12 +2,12 @@
 
 > React, but set up already.
 
-A batteries-included React meta-framework. Scaffold a full project with [Ant Design 5](https://ant.design), [styled-components](https://styled-components.com), [Zustand](https://zustand-demo.pmnd.rs), [Lucide Icons](https://lucide.dev), and dark/light mode — all wired and working from the first line.
+A batteries-included React meta-framework. Scaffold a full Bun-powered project with [Ant Design 5](https://ant.design), [styled-components](https://styled-components.com), [Zustand](https://zustand-demo.pmnd.rs), [Lucide Icons](https://lucide.dev), and dark/light mode — all wired and working from the first line.
 
 ```bash
-npx create-rejoice-app my-app
+bunx create-rejoice-app my-app
 cd my-app
-pnpm install && pnpm dev
+bun install && bun dev
 ```
 
 ## What's included
@@ -18,6 +18,7 @@ pnpm install && pnpm dev
 | [styled-components](https://styled-components.com) | CSS-in-JS with full theme token access              |
 | [Zustand](https://zustand-demo.pmnd.rs)            | Minimal global state — no providers, no reducers    |
 | [Lucide Icons](https://lucide.dev)                 | 500+ crisp SVG icons as React components            |
+| Bun official bundler                               | Superfast dev server and production builds          |
 | Dark mode                                          | Persistent via localStorage, toggle out of the box  |
 | Zero-config JSX                                    | No `import React` needed anywhere                   |
 
@@ -33,9 +34,9 @@ pnpm install && pnpm dev
 ### Scaffolding
 
 ```bash
-npx create-rejoice-app my-app
+bunx create-rejoice-app my-app
 # or
-npx create-rejoice-app          # interactive prompts
+bunx create-rejoice-app         # interactive prompts
 ```
 
 ### In your app

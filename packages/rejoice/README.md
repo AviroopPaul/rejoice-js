@@ -54,4 +54,4 @@ createRoot(document.getElementById("root")!).render(
 
 ## Scaffolding
 
-If you want a ready-made starter app instead of wiring this manually, use [`create-rejoice-app`](https://www.npmjs.com/package/create-rejoice-app).
+If you want a ready-made Bun-powered starter app instead of wiring this manually, use [`create-rejoice-app`](https://www.npmjs.com/package/create-rejoice-app).

@@ -1,7 +1,7 @@
 {
   "name": "create-rejoice-app",
   "version": "0.1.0",
-  "description": "Scaffold a batteries-included React app powered by rejoice-js, Ant Design, styled-components, Zustand, and built-in theming.",
+  "description": "Scaffold a Bun-powered React app with rejoice-js, Ant Design, styled-components, Zustand, and built-in theming.",
   "type": "module",
   "scripts": {
     "build": "tsup",
@@ -20,7 +20,7 @@
     "react",
     "scaffold",
     "cli",
-    "vite",
+    "bun",
     "antd",
     "styled-components",
     "zustand"

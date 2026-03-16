@@ -1,6 +1,6 @@
 # create-rejoice-app
 
-Scaffold a batteries-included React app powered by `rejoice-js`.
+Scaffold a batteries-included React app powered by `rejoice-js` and Bun.
 
 The generated app comes prewired with:
 
@@ -9,22 +9,23 @@ The generated app comes prewired with:
 - Zustand
 - built-in light/dark theme support
 - zero-config JSX via `rejoice-js`
+- Bun as the official bundler for superfast dev and production builds
 - optional React Router setup
-- TypeScript + Vite
+- TypeScript + Bun
 
 ## Quick start
 
 ```bash
-npx create-rejoice-app my-app
+bunx create-rejoice-app my-app
 cd my-app
-pnpm install
-pnpm dev
+bun install
+bun dev
 ```
 
 You can also run it without arguments and answer the prompts:
 
 ```bash
-npx create-rejoice-app
+bunx create-rejoice-app
 ```
 
 ## What the CLI asks for
@@ -32,26 +33,18 @@ npx create-rejoice-app
 - project name
 - whether to include React Router v6
 - default theme: light or dark
-- package manager: `pnpm`, `npm`, or `yarn`
 - whether to initialize a git repository
 
 ## Generated app basics
 
-The scaffolded app is set up to use `rejoice-js` as the JSX import source and includes:
+The scaffolded app is set up to use `rejoice-js` as the JSX import source and Bun as the official bundler. It includes:
 
 - `RejoiceProvider` for theme wiring
 - Ant Design components
 - `styled` from styled-components
 - Zustand state store examples
+- Bun-powered dev and production build commands
 - starter app structure ready for agent-driven edits
-
-## Workspace note
-
-If you scaffold inside an existing `pnpm` workspace, install dependencies in the generated app with:
-
-```bash
-pnpm install --ignore-workspace
-```
 
 ## Related package
 

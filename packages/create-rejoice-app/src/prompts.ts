@@ -5,7 +5,6 @@ export interface UserChoices {
   projectName: string;
   includeRouter: boolean;
   defaultTheme: "light" | "dark";
-  packageManager: "pnpm" | "npm" | "yarn";
   initGit: boolean;
 }
 
@@ -45,17 +44,6 @@ export async function gatherChoices(nameFromArg?: string): Promise<UserChoices> 
       initial: 0,
     },
     {
-      type: "select",
-      name: "packageManager",
-      message: "Package manager:",
-      choices: [
-        { title: "pnpm", value: "pnpm" },
-        { title: "npm", value: "npm" },
-        { title: "yarn", value: "yarn" },
-      ],
-      initial: 0,
-    },
-    {
       type: "toggle",
       name: "initGit",
       message: "Initialize git repository?",
@@ -76,7 +64,6 @@ export async function gatherChoices(nameFromArg?: string): Promise<UserChoices> 
     projectName: nameFromArg ?? answers.projectName,
     includeRouter: answers.includeRouter ?? true,
     defaultTheme: answers.defaultTheme ?? "light",
-    packageManager: answers.packageManager ?? "pnpm",
     initGit: answers.initGit ?? true,
   };
 }
