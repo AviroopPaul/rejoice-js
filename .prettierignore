@@ -4,3 +4,4 @@ node_modules
 coverage
 .pnpm-store
 .husky/_
+mcp/.venv
