@@ -1,0 +1,1205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Docs — rejoice-js</title>
+    <meta
+      name="description"
+      content="Documentation for rejoice-js — a batteries-included React stack for coding agents and developers."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="docs.css" />
+  </head>
+  <body>
+    <!-- Nav -->
+    <nav class="nav">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">rejoice</a>
+      </div>
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+    </nav>
+
+    <div class="docs-layout">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-scroll">
+          <div class="sidebar-group">
+            <h4 class="sidebar-heading">Getting Started</h4>
+            <a href="#installation" class="sidebar-link">Installation</a>
+            <a href="#quick-start" class="sidebar-link">Quick Start</a>
+            <a href="#project-structure" class="sidebar-link">Project Structure</a>
+          </div>
+          <div class="sidebar-group">
+            <h4 class="sidebar-heading">Core</h4>
+            <a href="#rejoice-provider" class="sidebar-link">RejoiceProvider</a>
+            <a href="#theme-system" class="sidebar-link">Theme System</a>
+            <a href="#use-theme" class="sidebar-link">useTheme</a>
+            <a href="#use-theme-store" class="sidebar-link">useThemeStore</a>
+            <a href="#theme-tokens" class="sidebar-link">Theme Tokens</a>
+          </div>
+          <div class="sidebar-group">
+            <h4 class="sidebar-heading">React</h4>
+            <a href="#react-hooks" class="sidebar-link">Hooks</a>
+            <a href="#react-utilities" class="sidebar-link">Utilities</a>
+            <a href="#react-dom" class="sidebar-link">React DOM</a>
+            <a href="#jsx-runtime" class="sidebar-link">JSX Runtime</a>
+          </div>
+          <div class="sidebar-group">
+            <h4 class="sidebar-heading">Ant Design</h4>
+            <a href="#antd-components" class="sidebar-link">Components</a>
+            <a href="#antd-layout" class="sidebar-link">Layout &amp; Grid</a>
+            <a href="#antd-feedback" class="sidebar-link">Feedback &amp; Status</a>
+            <a href="#antd-theme" class="sidebar-link">Ant Design Theme</a>
+          </div>
+          <div class="sidebar-group">
+            <h4 class="sidebar-heading">Styled Components</h4>
+            <a href="#styled-api" class="sidebar-link">API</a>
+            <a href="#styled-theming" class="sidebar-link">Theming</a>
+          </div>
+          <div class="sidebar-group">
+            <h4 class="sidebar-heading">Zustand</h4>
+            <a href="#zustand-api" class="sidebar-link">Store API</a>
+            <a href="#zustand-middleware" class="sidebar-link">Middleware</a>
+          </div>
+          <div class="sidebar-group">
+            <h4 class="sidebar-heading">Types</h4>
+            <a href="#type-exports" class="sidebar-link">Type Exports</a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="docs-main">
+        <div class="docs-content">
+          <!-- ─── GETTING STARTED ─── -->
+          <section id="installation">
+            <div class="section-label">Getting Started</div>
+            <h1>Installation</h1>
+            <p>
+              Scaffold a new rejoice app with a single command. The CLI will walk you through
+              project name, router setup, default theme, and git initialization.
+            </p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">terminal</span>
+                <button class="code-copy-btn" aria-label="Copy code">Copy</button>
+              </div>
+              <pre><code>bunx create-rejoice-app my-app
+cd my-app
+bun install
+bun dev</code></pre>
+            </div>
+            <div class="callout callout--info">
+              <span class="callout-icon">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 16v-4" />
+                  <path d="M12 8h.01" />
+                </svg>
+              </span>
+              <p>
+                Requires <a href="https://bun.sh" target="_blank" rel="noopener">Bun</a> installed.
+                The scaffolder uses Bun as the default runtime and bundler.
+              </p>
+            </div>
+            <h3>CLI Options</h3>
+            <p>The interactive prompts ask for:</p>
+            <div class="props-table-wrap">
+              <table class="props-table">
+                <thead>
+                  <tr>
+                    <th>Option</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>Project name</code></td>
+                    <td>CLI argument or prompt</td>
+                    <td>Must be a valid npm package name</td>
+                  </tr>
+                  <tr>
+                    <td><code>Include React Router</code></td>
+                    <td><code>true</code></td>
+                    <td>Adds <code>react-router-dom</code> v6 with sample routes</td>
+                  </tr>
+                  <tr>
+                    <td><code>Default theme</code></td>
+                    <td><code>"light"</code></td>
+                    <td>Sets the initial theme for <code>RejoiceProvider</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>Initialize git</code></td>
+                    <td><code>true</code></td>
+                    <td>Runs <code>git init</code> with an initial commit</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+
+          <section id="quick-start">
+            <h2>Quick Start</h2>
+            <p>After scaffolding, your app is ready. Here's the entry point the CLI generates:</p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">src/main.tsx</span>
+                <button class="code-copy-btn" aria-label="Copy code">Copy</button>
+              </div>
+              <pre><code><span class="code-keyword">import</span> { createRoot, RejoiceProvider } <span class="code-keyword">from</span> <span class="code-string">"rejoice-js"</span>;
+<span class="code-keyword">import</span> App <span class="code-keyword">from</span> <span class="code-string">"./App"</span>;
+
+<span class="code-fn">createRoot</span>(document.<span class="code-fn">getElementById</span>(<span class="code-string">"root"</span>)!).<span class="code-fn">render</span>(
+  &lt;<span class="code-tag">RejoiceProvider</span> <span class="code-attr">defaultTheme</span>=<span class="code-string">"light"</span>&gt;
+    &lt;<span class="code-tag">App</span> /&gt;
+  &lt;/<span class="code-tag">RejoiceProvider</span>&gt;
+);</code></pre>
+            </div>
+            <p>
+              Everything is imported from <code>rejoice-js</code> — React, components, hooks,
+              styling, and state management. No second import source needed.
+            </p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">src/App.tsx</span>
+                <button class="code-copy-btn" aria-label="Copy code">Copy</button>
+              </div>
+              <pre><code><span class="code-keyword">import</span> {
+  useState,
+  Button,
+  Card,
+  styled,
+  useTheme,
+} <span class="code-keyword">from</span> <span class="code-string">"rejoice-js"</span>;
+
+<span class="code-keyword">const</span> Wrapper = <span class="code-fn">styled</span>.div<span class="code-string">`
+  padding: ${</span>({ theme }) =&gt; theme.<span class="code-fn">spacing</span>(<span class="code-num">3</span>)<span class="code-string">};
+  background: ${</span>({ theme }) =&gt; theme.colors.background<span class="code-string">};
+`</span>;
+
+<span class="code-keyword">export default function</span> <span class="code-fn">App</span>() {
+  <span class="code-keyword">const</span> [count, setCount] = <span class="code-fn">useState</span>(<span class="code-num">0</span>);
+  <span class="code-keyword">const</span> { isDarkMode, toggleTheme } = <span class="code-fn">useTheme</span>();
+
+  <span class="code-keyword">return</span> (
+    &lt;<span class="code-tag">Wrapper</span>&gt;
+      &lt;<span class="code-tag">Card</span> <span class="code-attr">title</span>=<span class="code-string">"Hello, rejoice"</span>&gt;
+        &lt;<span class="code-tag">Button</span> <span class="code-attr">onClick</span>={() =&gt; <span class="code-fn">setCount</span>(c =&gt; c + <span class="code-num">1</span>)}&gt;
+          Clicked {count} times
+        &lt;/<span class="code-tag">Button</span>&gt;
+        &lt;<span class="code-tag">Button</span> <span class="code-attr">onClick</span>={toggleTheme}&gt;
+          {isDarkMode ? <span class="code-string">"Light"</span> : <span class="code-string">"Dark"</span>} Mode
+        &lt;/<span class="code-tag">Button</span>&gt;
+      &lt;/<span class="code-tag">Card</span>&gt;
+    &lt;/<span class="code-tag">Wrapper</span>&gt;
+  );
+}</code></pre>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+
+          <section id="project-structure">
+            <h2>Project Structure</h2>
+            <p>The scaffolded app follows a clean, minimal layout:</p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">directory</span>
+              </div>
+              <pre><code>my-app/
+  index.html           <span class="code-comment"># Bun HTML entry point</span>
+  package.json
+  tsconfig.json        <span class="code-comment"># jsxImportSource: "rejoice-js"</span>
+  src/
+    main.tsx           <span class="code-comment"># App bootstrap with RejoiceProvider</span>
+    App.tsx            <span class="code-comment"># Root component</span>
+    App.styles.ts      <span class="code-comment"># styled-components</span>
+    styled.d.ts        <span class="code-comment"># Theme type augmentation</span>
+    store/
+      appStore.ts      <span class="code-comment"># Zustand store example</span>
+    router.tsx         <span class="code-comment"># React Router config (if opted in)</span>
+    pages/             <span class="code-comment"># Route pages (if opted in)</span></code></pre>
+            </div>
+            <div class="callout callout--note">
+              <span class="callout-icon">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M12 20h9" />
+                  <path
+                    d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838.838-2.872a2 2 0 0 1 .506-.855z"
+                  />
+                </svg>
+              </span>
+              <p>
+                The <code>tsconfig.json</code> sets <code>jsxImportSource: "rejoice-js"</code>, so
+                JSX works without importing React. The library delegates to
+                <code>react/jsx-runtime</code> internally.
+              </p>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+
+          <!-- ─── CORE ─── -->
+          <section id="rejoice-provider">
+            <div class="section-label">Core</div>
+            <h1>RejoiceProvider</h1>
+            <p>
+              The root provider that wires up Ant Design theming, styled-components theme context,
+              and the Zustand theme store. Wrap your app with this once.
+            </p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">tsx</span>
+                <button class="code-copy-btn" aria-label="Copy code">Copy</button>
+              </div>
+              <pre><code><span class="code-keyword">import</span> { createRoot, RejoiceProvider } <span class="code-keyword">from</span> <span class="code-string">"rejoice-js"</span>;
+
+<span class="code-fn">createRoot</span>(document.<span class="code-fn">getElementById</span>(<span class="code-string">"root"</span>)!).<span class="code-fn">render</span>(
+  &lt;<span class="code-tag">RejoiceProvider</span> <span class="code-attr">defaultTheme</span>=<span class="code-string">"dark"</span>&gt;
+    &lt;<span class="code-tag">App</span> /&gt;
+  &lt;/<span class="code-tag">RejoiceProvider</span>&gt;
+);</code></pre>
+            </div>
+            <h3>Props</h3>
+            <div class="props-table-wrap">
+              <table class="props-table">
+                <thead>
+                  <tr>
+                    <th>Prop</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>children</code></td>
+                    <td><code>React.ReactNode</code></td>
+                    <td>Required</td>
+                    <td>Your application tree</td>
+                  </tr>
+                  <tr>
+                    <td><code>defaultTheme</code></td>
+                    <td><code>"light" | "dark"</code></td>
+                    <td><code>"light"</code></td>
+                    <td>Initial theme mode if no persisted preference exists</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>What it does</h3>
+            <ul>
+              <li>
+                Wraps your app with Ant Design's <code>ConfigProvider</code> — switching between
+                <code>defaultAlgorithm</code> and <code>darkAlgorithm</code> based on theme mode
+              </li>
+              <li>
+                Wraps with styled-components <code>ThemeProvider</code> — injecting theme tokens
+                into all styled components
+              </li>
+              <li>
+                Syncs with the Zustand theme store — so <code>useTheme()</code> and
+                <code>useThemeStore()</code> work anywhere in the tree
+              </li>
+            </ul>
+          </section>
+
+          <div class="divider"></div>
+
+          <section id="theme-system">
+            <h2>Theme System</h2>
+            <p>
+              Rejoice ships a unified theme system that synchronizes Ant Design, styled-components,
+              and Zustand. Theme preference is automatically persisted to
+              <code>localStorage</code> under the key <code>rejoice-theme-storage</code>.
+            </p>
+            <div class="theme-diagram">
+              <div class="theme-diagram-box">
+                <span class="theme-diagram-label">RejoiceProvider</span>
+                <div class="theme-diagram-row">
+                  <div class="theme-diagram-node">Ant Design<br /><code>ConfigProvider</code></div>
+                  <div class="theme-diagram-node">
+                    styled-components<br /><code>ThemeProvider</code>
+                  </div>
+                  <div class="theme-diagram-node">Zustand<br /><code>themeStore</code></div>
+                </div>
+                <div class="theme-diagram-arrow">localStorage persistence</div>
+              </div>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+
+          <section id="use-theme">
+            <h2>useTheme</h2>
+            <p>
+              The primary hook for reading and controlling the theme. Returns the current mode and
+              actions to change it.
+            </p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">tsx</span>
+                <button class="code-copy-btn" aria-label="Copy code">Copy</button>
+              </div>
+              <pre><code><span class="code-keyword">import</span> { useTheme, Button, Switch } <span class="code-keyword">from</span> <span class="code-string">"rejoice-js"</span>;
+
+<span class="code-keyword">function</span> <span class="code-fn">ThemeToggle</span>() {
+  <span class="code-keyword">const</span> { mode, isDarkMode, toggleTheme, setTheme } = <span class="code-fn">useTheme</span>();
+
+  <span class="code-keyword">return</span> (
+    &lt;<span class="code-tag">div</span>&gt;
+      &lt;<span class="code-tag">p</span>&gt;Current: {mode}&lt;/<span class="code-tag">p</span>&gt;
+      &lt;<span class="code-tag">Switch</span>
+        <span class="code-attr">checked</span>={isDarkMode}
+        <span class="code-attr">onChange</span>={toggleTheme}
+      /&gt;
+      &lt;<span class="code-tag">Button</span> <span class="code-attr">onClick</span>={() =&gt; <span class="code-fn">setTheme</span>(<span class="code-string">"dark"</span>)}&gt;
+        Force Dark
+      &lt;/<span class="code-tag">Button</span>&gt;
+    &lt;/<span class="code-tag">div</span>&gt;
+  );
+}</code></pre>
+            </div>
+            <h3>Return value</h3>
+            <div class="props-table-wrap">
+              <table class="props-table">
+                <thead>
+                  <tr>
+                    <th>Property</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>mode</code></td>
+                    <td><code>"light" | "dark"</code></td>
+                    <td>Current theme mode</td>
+                  </tr>
+                  <tr>
+                    <td><code>isDarkMode</code></td>
+                    <td><code>boolean</code></td>
+                    <td>Convenience boolean — <code>true</code> when dark</td>
+                  </tr>
+                  <tr>
+                    <td><code>toggleTheme</code></td>
+                    <td><code>() => void</code></td>
+                    <td>Flips between light and dark</td>
+                  </tr>
+                  <tr>
+                    <td><code>setTheme</code></td>
+                    <td><code>(mode: ThemeMode) => void</code></td>
+                    <td>Sets a specific theme mode</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+
+          <section id="use-theme-store">
+            <h2>useThemeStore</h2>
+            <p>
+              Direct access to the underlying Zustand store. Useful for selecting specific slices or
+              subscribing outside React.
+            </p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">tsx</span>
+                <button class="code-copy-btn" aria-label="Copy code">Copy</button>
+              </div>
+              <pre><code><span class="code-keyword">import</span> { useThemeStore } <span class="code-keyword">from</span> <span class="code-string">"rejoice-js"</span>;
+
+<span class="code-comment">// Select only what you need</span>
+<span class="code-keyword">const</span> mode = <span class="code-fn">useThemeStore</span>((s) =&gt; s.mode);
+<span class="code-keyword">const</span> toggle = <span class="code-fn">useThemeStore</span>((s) =&gt; s.toggleTheme);
+
+<span class="code-comment">// Subscribe outside React</span>
+useThemeStore.<span class="code-fn">subscribe</span>((state) =&gt; {
+  console.<span class="code-fn">log</span>(<span class="code-string">"Theme changed:"</span>, state.mode);
+});</code></pre>
+            </div>
+            <div class="callout callout--info">
+              <span class="callout-icon">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 16v-4" />
+                  <path d="M12 8h.01" />
+                </svg>
+              </span>
+              <p>
+                The store uses Zustand's <code>persist</code> middleware. Theme preference survives
+                page reloads automatically.
+              </p>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+
+          <section id="theme-tokens">
+            <h2>Theme Tokens</h2>
+            <p>
+              The styled-components theme object injected by <code>RejoiceProvider</code>. Access
+              these in any styled component via <code>props.theme</code>.
+            </p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">typescript</span>
+              </div>
+              <pre><code>{
+  mode: <span class="code-string">"light"</span> | <span class="code-string">"dark"</span>,
+  isDark: <span class="code-keyword">boolean</span>,
+  colors: {
+    background: <span class="code-string">"#ffffff"</span>  | <span class="code-string">"#141414"</span>,
+    surface:    <span class="code-string">"#f5f5f5"</span>  | <span class="code-string">"#1f1f1f"</span>,
+    text:       <span class="code-string">"rgba(0,0,0,0.88)"</span>   | <span class="code-string">"rgba(255,255,255,0.85)"</span>,
+    primary:    <span class="code-string">"#1677ff"</span>,
+    border:     <span class="code-string">"#d9d9d9"</span>  | <span class="code-string">"#303030"</span>,
+  },
+  spacing: (n: <span class="code-keyword">number</span>) =&gt; <span class="code-keyword">string</span>  <span class="code-comment">// returns `${n * 8}px`</span>
+}</code></pre>
+            </div>
+            <h3>Usage in styled-components</h3>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">tsx</span>
+                <button class="code-copy-btn" aria-label="Copy code">Copy</button>
+              </div>
+              <pre><code><span class="code-keyword">import</span> { styled } <span class="code-keyword">from</span> <span class="code-string">"rejoice-js"</span>;
+
+<span class="code-keyword">const</span> Panel = <span class="code-fn">styled</span>.div<span class="code-string">`
+  background: ${</span>({ theme }) =&gt; theme.colors.surface<span class="code-string">};
+  padding: ${</span>({ theme }) =&gt; theme.<span class="code-fn">spacing</span>(<span class="code-num">2</span>)<span class="code-string">};
+  border: 1px solid ${</span>({ theme }) =&gt; theme.colors.border<span class="code-string">};
+  color: ${</span>({ theme }) =&gt; theme.colors.text<span class="code-string">};
+  border-radius: 8px;
+`</span>;</code></pre>
+            </div>
+            <h3>Type augmentation</h3>
+            <p>
+              The scaffolded app includes <code>src/styled.d.ts</code> to give you full autocomplete
+              on theme tokens:
+            </p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">src/styled.d.ts</span>
+                <button class="code-copy-btn" aria-label="Copy code">Copy</button>
+              </div>
+              <pre><code><span class="code-keyword">import</span> <span class="code-string">"styled-components"</span>;
+
+<span class="code-keyword">declare module</span> <span class="code-string">"styled-components"</span> {
+  <span class="code-keyword">export interface</span> <span class="code-fn">DefaultTheme</span> {
+    mode: <span class="code-string">"light"</span> | <span class="code-string">"dark"</span>;
+    isDark: <span class="code-keyword">boolean</span>;
+    colors: {
+      background: <span class="code-keyword">string</span>;
+      surface: <span class="code-keyword">string</span>;
+      text: <span class="code-keyword">string</span>;
+      primary: <span class="code-keyword">string</span>;
+      border: <span class="code-keyword">string</span>;
+    };
+    spacing: (n: <span class="code-keyword">number</span>) =&gt; <span class="code-keyword">string</span>;
+  }
+}</code></pre>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+
+          <!-- ─── REACT ─── -->
+          <section id="react-hooks">
+            <div class="section-label">React</div>
+            <h1>Hooks</h1>
+            <p>
+              All standard React hooks are re-exported from <code>rejoice-js</code> so you never
+              need to import from <code>react</code> directly.
+            </p>
+            <div class="export-grid">
+              <div class="export-card">
+                <code>useState</code>
+                <span>State management</span>
+              </div>
+              <div class="export-card">
+                <code>useEffect</code>
+                <span>Side effects</span>
+              </div>
+              <div class="export-card">
+                <code>useLayoutEffect</code>
+                <span>Synchronous effects</span>
+              </div>
+              <div class="export-card">
+                <code>useReducer</code>
+                <span>Complex state logic</span>
+              </div>
+              <div class="export-card">
+                <code>useRef</code>
+                <span>Mutable references</span>
+              </div>
+              <div class="export-card">
+                <code>useContext</code>
+                <span>Context consumption</span>
+              </div>
+              <div class="export-card">
+                <code>useMemo</code>
+                <span>Memoized values</span>
+              </div>
+              <div class="export-card">
+                <code>useCallback</code>
+                <span>Memoized callbacks</span>
+              </div>
+              <div class="export-card">
+                <code>useId</code>
+                <span>Unique IDs</span>
+              </div>
+              <div class="export-card">
+                <code>useTransition</code>
+                <span>Non-blocking updates</span>
+              </div>
+              <div class="export-card">
+                <code>useDeferredValue</code>
+                <span>Deferred rendering</span>
+              </div>
+              <div class="export-card">
+                <code>useSyncExternalStore</code>
+                <span>External store sync</span>
+              </div>
+            </div>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">tsx</span>
+                <button class="code-copy-btn" aria-label="Copy code">Copy</button>
+              </div>
+              <pre><code><span class="code-comment">// All from one import</span>
+<span class="code-keyword">import</span> {
+  useState,
+  useEffect,
+  useRef,
+  useMemo,
+  useCallback,
+} <span class="code-keyword">from</span> <span class="code-string">"rejoice-js"</span>;</code></pre>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+
+          <section id="react-utilities">
+            <h2>Utilities</h2>
+            <p>React utilities and component helpers available from the same import.</p>
+            <div class="export-grid">
+              <div class="export-card">
+                <code>memo</code>
+                <span>Component memoization</span>
+              </div>
+              <div class="export-card">
+                <code>lazy</code>
+                <span>Code splitting</span>
+              </div>
+              <div class="export-card">
+                <code>Suspense</code>
+                <span>Async boundaries</span>
+              </div>
+              <div class="export-card">
+                <code>StrictMode</code>
+                <span>Development checks</span>
+              </div>
+              <div class="export-card">
+                <code>Fragment</code>
+                <span>Invisible wrapper</span>
+              </div>
+              <div class="export-card">
+                <code>createElement</code>
+                <span>JSX alternative</span>
+              </div>
+              <div class="export-card">
+                <code>createContext</code>
+                <span>Context creation</span>
+              </div>
+              <div class="export-card">
+                <code>forwardRef</code>
+                <span>Ref forwarding</span>
+              </div>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+
+          <section id="react-dom">
+            <h2>React DOM</h2>
+            <p>DOM rendering methods — use <code>createRoot</code> for your app entry point.</p>
+            <div class="export-grid">
+              <div class="export-card">
+                <code>createRoot</code>
+                <span>Mount React app to DOM</span>
+              </div>
+              <div class="export-card">
+                <code>hydrateRoot</code>
+                <span>Hydrate server-rendered HTML</span>
+              </div>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+
+          <section id="jsx-runtime">
+            <h2>JSX Runtime</h2>
+            <p>
+              Rejoice provides its own JSX runtime that delegates to React's. This enables
+              zero-config JSX — no <code>import React from "react"</code> needed anywhere.
+            </p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">tsconfig.json</span>
+              </div>
+              <pre><code>{
+  <span class="code-attr">"compilerOptions"</span>: {
+    <span class="code-attr">"jsx"</span>: <span class="code-string">"react-jsx"</span>,
+    <span class="code-attr">"jsxImportSource"</span>: <span class="code-string">"rejoice-js"</span>
+  }
+}</code></pre>
+            </div>
+            <p>
+              With this config, TypeScript and Bun automatically resolve JSX transforms from
+              <code>rejoice-js/jsx-runtime</code>. You write JSX as usual and it just works.
+            </p>
+          </section>
+
+          <div class="divider"></div>
+
+          <!-- ─── ANT DESIGN ─── -->
+          <section id="antd-components">
+            <div class="section-label">Ant Design</div>
+            <h1>Components</h1>
+            <p>
+              39+ Ant Design 5 components are pre-exported. They're automatically themed by
+              <code>RejoiceProvider</code> — dark mode, primary color, and all token overrides apply
+              with zero configuration.
+            </p>
+
+            <h3>Data Entry</h3>
+            <div class="export-grid">
+              <div class="export-card">
+                <code>Button</code>
+                <span>Actions &amp; triggers</span>
+              </div>
+              <div class="export-card">
+                <code>Input</code>
+                <span>Text input</span>
+              </div>
+              <div class="export-card">
+                <code>Select</code>
+                <span>Dropdown selection</span>
+              </div>
+              <div class="export-card">
+                <code>Form</code>
+                <span>Form wrapper &amp; validation</span>
+              </div>
+              <div class="export-card">
+                <code>DatePicker</code>
+                <span>Date selection</span>
+              </div>
+              <div class="export-card">
+                <code>Upload</code>
+                <span>File uploads</span>
+              </div>
+              <div class="export-card">
+                <code>Slider</code>
+                <span>Range input</span>
+              </div>
+              <div class="export-card">
+                <code>Switch</code>
+                <span>Toggle boolean</span>
+              </div>
+              <div class="export-card">
+                <code>Checkbox</code>
+                <span>Multi-select</span>
+              </div>
+              <div class="export-card">
+                <code>Radio</code>
+                <span>Single-select</span>
+              </div>
+            </div>
+
+            <h3>Data Display</h3>
+            <div class="export-grid">
+              <div class="export-card">
+                <code>Table</code>
+                <span>Tabular data</span>
+              </div>
+              <div class="export-card">
+                <code>Card</code>
+                <span>Content container</span>
+              </div>
+              <div class="export-card">
+                <code>Tabs</code>
+                <span>Tabbed content</span>
+              </div>
+              <div class="export-card">
+                <code>Badge</code>
+                <span>Status indicator</span>
+              </div>
+              <div class="export-card">
+                <code>Tag</code>
+                <span>Labels &amp; tags</span>
+              </div>
+              <div class="export-card">
+                <code>Tooltip</code>
+                <span>Hover info</span>
+              </div>
+              <div class="export-card">
+                <code>Typography</code>
+                <span>Text &amp; headings</span>
+              </div>
+              <div class="export-card">
+                <code>Avatar</code>
+                <span>User avatar</span>
+              </div>
+              <div class="export-card">
+                <code>List</code>
+                <span>List layout</span>
+              </div>
+              <div class="export-card">
+                <code>Progress</code>
+                <span>Progress indicators</span>
+              </div>
+            </div>
+
+            <h3>Overlay</h3>
+            <div class="export-grid">
+              <div class="export-card">
+                <code>Modal</code>
+                <span>Dialog windows</span>
+              </div>
+              <div class="export-card">
+                <code>Drawer</code>
+                <span>Side panels</span>
+              </div>
+              <div class="export-card">
+                <code>Dropdown</code>
+                <span>Contextual menus</span>
+              </div>
+            </div>
+
+            <h3>Navigation</h3>
+            <div class="export-grid">
+              <div class="export-card">
+                <code>Menu</code>
+                <span>Navigation menus</span>
+              </div>
+              <div class="export-card">
+                <code>Breadcrumb</code>
+                <span>Page hierarchy</span>
+              </div>
+              <div class="export-card">
+                <code>Steps</code>
+                <span>Step-by-step flow</span>
+              </div>
+            </div>
+
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">tsx</span>
+                <button class="code-copy-btn" aria-label="Copy code">Copy</button>
+              </div>
+              <pre><code><span class="code-keyword">import</span> { Button, Card, Table, Modal, Form, Input } <span class="code-keyword">from</span> <span class="code-string">"rejoice-js"</span>;
+
+<span class="code-comment">// Use exactly like Ant Design — same props, same API.</span>
+<span class="code-comment">// Theme is automatically applied by RejoiceProvider.</span></code></pre>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+
+          <section id="antd-layout">
+            <h2>Layout &amp; Grid</h2>
+            <p>Ant Design's layout primitives for building page structure.</p>
+            <div class="export-grid">
+              <div class="export-card">
+                <code>Layout</code>
+                <span>Page structure (Header, Sider, Content, Footer)</span>
+              </div>
+              <div class="export-card">
+                <code>Space</code>
+                <span>Inline spacing</span>
+              </div>
+              <div class="export-card">
+                <code>Row</code>
+                <span>Flex row</span>
+              </div>
+              <div class="export-card">
+                <code>Col</code>
+                <span>Grid column</span>
+              </div>
+              <div class="export-card">
+                <code>Divider</code>
+                <span>Content separator</span>
+              </div>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+
+          <section id="antd-feedback">
+            <h2>Feedback &amp; Status</h2>
+            <p>Components for communicating state and results to users.</p>
+            <div class="export-grid">
+              <div class="export-card">
+                <code>Spin</code>
+                <span>Loading spinner</span>
+              </div>
+              <div class="export-card">
+                <code>Alert</code>
+                <span>Status messages</span>
+              </div>
+              <div class="export-card">
+                <code>Result</code>
+                <span>Operation outcomes</span>
+              </div>
+              <div class="export-card">
+                <code>Empty</code>
+                <span>Empty state placeholder</span>
+              </div>
+              <div class="export-card">
+                <code>Skeleton</code>
+                <span>Loading placeholder</span>
+              </div>
+              <div class="export-card">
+                <code>ConfigProvider</code>
+                <span>Global config overrides</span>
+              </div>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+
+          <section id="antd-theme">
+            <h2>Ant Design Theme</h2>
+            <p>
+              The Ant Design theme algorithms are available as <code>antdTheme</code> for advanced
+              use cases.
+            </p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">tsx</span>
+                <button class="code-copy-btn" aria-label="Copy code">Copy</button>
+              </div>
+              <pre><code><span class="code-keyword">import</span> { antdTheme, ConfigProvider } <span class="code-keyword">from</span> <span class="code-string">"rejoice-js"</span>;
+
+<span class="code-comment">// Access Ant Design's theme algorithms</span>
+<span class="code-keyword">const</span> { defaultAlgorithm, darkAlgorithm } = antdTheme;
+
+<span class="code-comment">// Override locally if needed</span>
+&lt;<span class="code-tag">ConfigProvider</span> <span class="code-attr">theme</span>={{ algorithm: darkAlgorithm }}&gt;
+  &lt;<span class="code-tag">MySection</span> /&gt;
+&lt;/<span class="code-tag">ConfigProvider</span>&gt;</code></pre>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+
+          <!-- ─── STYLED COMPONENTS ─── -->
+          <section id="styled-api">
+            <div class="section-label">Styled Components</div>
+            <h1>API</h1>
+            <p>styled-components v6 is re-exported for CSS-in-JS with full theme token access.</p>
+            <div class="export-grid">
+              <div class="export-card">
+                <code>styled</code>
+                <span>Create themed components</span>
+              </div>
+              <div class="export-card">
+                <code>css</code>
+                <span>CSS helper for interpolation</span>
+              </div>
+              <div class="export-card">
+                <code>keyframes</code>
+                <span>Define animations</span>
+              </div>
+              <div class="export-card">
+                <code>createGlobalStyle</code>
+                <span>Global CSS injection</span>
+              </div>
+            </div>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">tsx</span>
+                <button class="code-copy-btn" aria-label="Copy code">Copy</button>
+              </div>
+              <pre><code><span class="code-keyword">import</span> { styled, css, keyframes, createGlobalStyle } <span class="code-keyword">from</span> <span class="code-string">"rejoice-js"</span>;
+
+<span class="code-keyword">const</span> fadeIn = <span class="code-fn">keyframes</span><span class="code-string">`
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+`</span>;
+
+<span class="code-keyword">const</span> Card = <span class="code-fn">styled</span>.div<span class="code-string">`
+  background: ${</span>({ theme }) =&gt; theme.colors.surface<span class="code-string">};
+  padding: ${</span>({ theme }) =&gt; theme.<span class="code-fn">spacing</span>(<span class="code-num">3</span>)<span class="code-string">};
+  border-radius: 12px;
+  animation: ${</span>fadeIn<span class="code-string">} 0.3s ease;
+`</span>;
+
+<span class="code-keyword">const</span> GlobalStyle = <span class="code-fn">createGlobalStyle</span><span class="code-string">`
+  body {
+    background: ${</span>({ theme }) =&gt; theme.colors.background<span class="code-string">};
+    color: ${</span>({ theme }) =&gt; theme.colors.text<span class="code-string">};
+  }
+`</span>;</code></pre>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+
+          <section id="styled-theming">
+            <h2>Theming</h2>
+            <p>
+              All styled components inside <code>RejoiceProvider</code> automatically receive the
+              theme object. Use it for dark-mode-aware styling without any additional setup.
+            </p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">tsx</span>
+                <button class="code-copy-btn" aria-label="Copy code">Copy</button>
+              </div>
+              <pre><code><span class="code-keyword">import</span> { styled } <span class="code-keyword">from</span> <span class="code-string">"rejoice-js"</span>;
+
+<span class="code-keyword">const</span> Header = <span class="code-fn">styled</span>.header<span class="code-string">`
+  background: ${</span>({ theme }) =&gt;
+    theme.isDark ? <span class="code-string">"rgba(255,255,255,0.04)"</span> : <span class="code-string">"rgba(0,0,0,0.02)"</span><span class="code-string">};
+  border-bottom: 1px solid ${</span>({ theme }) =&gt; theme.colors.border<span class="code-string">};
+  padding: ${</span>({ theme }) =&gt; theme.<span class="code-fn">spacing</span>(<span class="code-num">2</span>)<span class="code-string">} ${</span>({ theme }) =&gt; theme.<span class="code-fn">spacing</span>(<span class="code-num">3</span>)<span class="code-string">};
+`</span>;
+
+<span class="code-comment">// theme.isDark is a boolean — use it for conditional styles</span>
+<span class="code-comment">// theme.spacing(n) returns `${n * 8}px` — use it for consistent spacing</span></code></pre>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+
+          <!-- ─── ZUSTAND ─── -->
+          <section id="zustand-api">
+            <div class="section-label">Zustand</div>
+            <h1>Store API</h1>
+            <p>
+              Zustand v4 is re-exported for lightweight state management. Create stores with zero
+              boilerplate.
+            </p>
+            <div class="export-grid">
+              <div class="export-card">
+                <code>create</code>
+                <span>Create a React-bound store</span>
+              </div>
+              <div class="export-card">
+                <code>createStore</code>
+                <span>Create a vanilla store</span>
+              </div>
+              <div class="export-card">
+                <code>useShallow</code>
+                <span>Shallow equality selector</span>
+              </div>
+            </div>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">store/counterStore.ts</span>
+                <button class="code-copy-btn" aria-label="Copy code">Copy</button>
+              </div>
+              <pre><code><span class="code-keyword">import</span> { create } <span class="code-keyword">from</span> <span class="code-string">"rejoice-js"</span>;
+
+<span class="code-keyword">interface</span> <span class="code-fn">CounterState</span> {
+  count: <span class="code-keyword">number</span>;
+  increment: () =&gt; <span class="code-keyword">void</span>;
+  decrement: () =&gt; <span class="code-keyword">void</span>;
+}
+
+<span class="code-keyword">export const</span> useCounter = <span class="code-fn">create</span>&lt;CounterState&gt;((set, get) =&gt; ({
+  count: <span class="code-num">0</span>,
+  increment: () =&gt; <span class="code-fn">set</span>({ count: get().count + <span class="code-num">1</span> }),
+  decrement: () =&gt; <span class="code-fn">set</span>({ count: get().count - <span class="code-num">1</span> }),
+}));</code></pre>
+            </div>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">tsx</span>
+                <button class="code-copy-btn" aria-label="Copy code">Copy</button>
+              </div>
+              <pre><code><span class="code-keyword">import</span> { useShallow } <span class="code-keyword">from</span> <span class="code-string">"rejoice-js"</span>;
+<span class="code-keyword">import</span> { useCounter } <span class="code-keyword">from</span> <span class="code-string">"./store/counterStore"</span>;
+
+<span class="code-comment">// useShallow prevents re-renders when unrelated state changes</span>
+<span class="code-keyword">const</span> { count, increment } = <span class="code-fn">useCounter</span>(
+  <span class="code-fn">useShallow</span>((s) =&gt; ({ count: s.count, increment: s.increment }))
+);</code></pre>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+
+          <section id="zustand-middleware">
+            <h2>Middleware</h2>
+            <p>Three Zustand middleware functions are pre-exported for common patterns.</p>
+            <div class="export-grid">
+              <div class="export-card">
+                <code>persist</code>
+                <span>Persist state to localStorage</span>
+              </div>
+              <div class="export-card">
+                <code>devtools</code>
+                <span>Redux DevTools integration</span>
+              </div>
+              <div class="export-card">
+                <code>subscribeWithSelector</code>
+                <span>Fine-grained subscriptions</span>
+              </div>
+            </div>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">store/settingsStore.ts</span>
+                <button class="code-copy-btn" aria-label="Copy code">Copy</button>
+              </div>
+              <pre><code><span class="code-keyword">import</span> { create, persist, devtools } <span class="code-keyword">from</span> <span class="code-string">"rejoice-js"</span>;
+
+<span class="code-keyword">interface</span> <span class="code-fn">Settings</span> {
+  language: <span class="code-keyword">string</span>;
+  notifications: <span class="code-keyword">boolean</span>;
+  setLanguage: (lang: <span class="code-keyword">string</span>) =&gt; <span class="code-keyword">void</span>;
+  toggleNotifications: () =&gt; <span class="code-keyword">void</span>;
+}
+
+<span class="code-keyword">export const</span> useSettings = <span class="code-fn">create</span>&lt;Settings&gt;()(
+  <span class="code-fn">devtools</span>(
+    <span class="code-fn">persist</span>(
+      (set, get) =&gt; ({
+        language: <span class="code-string">"en"</span>,
+        notifications: <span class="code-keyword">true</span>,
+        setLanguage: (lang) =&gt; <span class="code-fn">set</span>({ language: lang }),
+        toggleNotifications: () =&gt;
+          <span class="code-fn">set</span>({ notifications: !get().notifications }),
+      }),
+      { name: <span class="code-string">"settings-storage"</span> }
+    )
+  )
+);</code></pre>
+            </div>
+          </section>
+
+          <div class="divider"></div>
+
+          <!-- ─── TYPES ─── -->
+          <section id="type-exports">
+            <div class="section-label">Types</div>
+            <h1>Type Exports</h1>
+            <p>TypeScript types exported for use in your application code.</p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">typescript</span>
+              </div>
+              <pre><code><span class="code-keyword">import type</span> {
+  ThemeMode,
+  ThemeState,
+  RejoiceProviderProps,
+  DefaultTheme,
+} <span class="code-keyword">from</span> <span class="code-string">"rejoice-js"</span>;</code></pre>
+            </div>
+            <div class="props-table-wrap">
+              <table class="props-table">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Definition</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>ThemeMode</code></td>
+                    <td><code>"light" | "dark"</code></td>
+                    <td>Union type for theme modes</td>
+                  </tr>
+                  <tr>
+                    <td><code>ThemeState</code></td>
+                    <td><code>{ mode, isDarkMode, toggleTheme, setTheme }</code></td>
+                    <td>Shape of the theme store</td>
+                  </tr>
+                  <tr>
+                    <td><code>RejoiceProviderProps</code></td>
+                    <td><code>{ children, defaultTheme? }</code></td>
+                    <td>Props for <code>RejoiceProvider</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>DefaultTheme</code></td>
+                    <td>styled-components theme interface</td>
+                    <td>Re-exported from styled-components for type augmentation</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <div class="docs-footer">
+            <p>
+              <a href="https://github.com/AviroopPaul/rejoice-js" target="_blank" rel="noopener"
+                >GitHub</a
+              >
+              <span class="footer-sep">&middot;</span>
+              <a href="https://www.npmjs.com/package/rejoice-js" target="_blank" rel="noopener"
+                >npm</a
+              >
+              <span class="footer-sep">&middot;</span>
+              Made by
+              <a href="https://github.com/AviroopPaul" target="_blank" rel="noopener">Aviroop</a>
+            </p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="docs.js"></script>
+  </body>
+</html>
