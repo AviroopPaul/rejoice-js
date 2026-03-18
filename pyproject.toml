@@ -2,4 +2,4 @@
 name = "rejoice-mcp"
 version = "1.0.0"
 requires-python = ">=3.12"
-dependencies = ["beautifulsoup4", "lxml"]
+dependencies = ["fastmcp", "beautifulsoup4", "lxml"]
