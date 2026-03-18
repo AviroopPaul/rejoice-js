@@ -57,23 +57,195 @@
         Requires <a href="https://bun.sh" target="_blank" rel="noopener">Bun</a> installed. That's
         it.
       </p>
-      <a href="docs.html" class="docs-btn">
-        Read the docs
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M5 12h14" />
-          <path d="M12 5l7 7-7 7" />
-        </svg>
-      </a>
+      <div class="hero-actions">
+        <button class="connect-mcp-btn" id="connectMcpBtn">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 5v14" />
+            <path d="M5 12h14" />
+          </svg>
+          Connect MCP
+        </button>
+        <a href="docs.html" class="docs-btn">
+          Read the docs
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
     </section>
+
+    <!-- MCP Modal -->
+    <div class="mcp-modal-overlay" id="mcpModalOverlay">
+      <div class="mcp-modal">
+        <div class="mcp-modal-header">
+          <h3>Connect MCP Server</h3>
+          <button class="mcp-modal-close" id="mcpModalClose" aria-label="Close">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M18 6L6 18" />
+              <path d="M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <p class="mcp-modal-desc">Add the rejoice-js docs MCP server to your editor or agent.</p>
+
+        <div class="mcp-tab-bar">
+          <button class="mcp-tab active" data-tab="claude">Claude Code</button>
+          <button class="mcp-tab" data-tab="codex">Codex</button>
+          <button class="mcp-tab" data-tab="cursor">Cursor</button>
+          <button class="mcp-tab" data-tab="json">.mcp.json</button>
+        </div>
+
+        <div class="mcp-tab-content active" id="tab-claude">
+          <div class="mcp-code-block">
+            <pre><code>claude mcp add --transport http rejoice-docs https://rejoice-js.fastmcp.app/mcp</code></pre>
+            <button
+              class="mcp-copy-btn"
+              data-copy="claude mcp add --transport http rejoice-docs https://rejoice-js.fastmcp.app/mcp"
+              aria-label="Copy"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="9" y="9" width="13" height="13" rx="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+            </button>
+          </div>
+          <p class="mcp-hint">
+            Run this in your terminal. The server will be available in all Claude Code sessions.
+          </p>
+        </div>
+
+        <div class="mcp-tab-content" id="tab-codex">
+          <div class="mcp-code-block">
+            <pre><code>codex mcp add rejoice-docs https://rejoice-js.fastmcp.app/mcp</code></pre>
+            <button
+              class="mcp-copy-btn"
+              data-copy="codex mcp add rejoice-docs https://rejoice-js.fastmcp.app/mcp"
+              aria-label="Copy"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="9" y="9" width="13" height="13" rx="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+            </button>
+          </div>
+          <p class="mcp-hint">
+            Run this in your terminal. Adds the server to <code>~/.codex/config.toml</code>.
+          </p>
+        </div>
+
+        <div class="mcp-tab-content" id="tab-cursor">
+          <p class="mcp-hint">Add to <code>.cursor/mcp.json</code> in your project root:</p>
+          <div class="mcp-code-block">
+            <pre><code>{
+  "mcpServers": {
+    "rejoice-docs": {
+      "url": "https://rejoice-js.fastmcp.app/mcp"
+    }
+  }
+}</code></pre>
+            <button
+              class="mcp-copy-btn"
+              data-copy='{"mcpServers":{"rejoice-docs":{"url":"https://rejoice-js.fastmcp.app/mcp"}}}'
+              aria-label="Copy"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="9" y="9" width="13" height="13" rx="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="mcp-tab-content" id="tab-json">
+          <p class="mcp-hint">Add a <code>.mcp.json</code> file to your project root:</p>
+          <div class="mcp-code-block">
+            <pre><code>{
+  "mcpServers": {
+    "rejoice-docs": {
+      "type": "http",
+      "url": "https://rejoice-js.fastmcp.app/mcp"
+    }
+  }
+}</code></pre>
+            <button
+              class="mcp-copy-btn"
+              data-copy='{"mcpServers":{"rejoice-docs":{"type":"http","url":"https://rejoice-js.fastmcp.app/mcp"}}}'
+              aria-label="Copy"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="9" y="9" width="13" height="13" rx="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+            </button>
+          </div>
+          <p class="mcp-hint">Works with any MCP-compatible client.</p>
+        </div>
+      </div>
+    </div>
 
     <!-- Features -->
     <section class="features" id="features">

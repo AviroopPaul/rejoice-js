@@ -5,3 +5,4 @@ coverage
 .pnpm-store
 .husky/_
 mcp/.venv
+.cursor

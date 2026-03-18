@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import re
 from pathlib import Path
 from typing import Any
@@ -531,7 +532,8 @@ import {{ Button, useTheme, styled, create, useState }} from "rejoice-js";
 
 
 def main():
-    mcp.run()
+    port = int(os.environ.get("PORT", "8080"))
+    mcp.run(transport="http", host="0.0.0.0", port=port)
 
 
 if __name__ == "__main__":
