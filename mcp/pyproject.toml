@@ -1,8 +1,0 @@
-[project]
-name = "rejoice-mcp"
-version = "1.0.0"
-requires-python = ">=3.10"
-dependencies = ["fastmcp", "beautifulsoup4", "lxml"]
-
-[project.scripts]
-rejoice-mcp = "server:main"
