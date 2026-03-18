@@ -1,0 +1,11 @@
+node_modules
+.turbo
+.pnpm-store
+.git
+.github
+.cursor
+mcp/.venv
+*.md
+!README.md
+!packages/rejoice/README.md
+!packages/create-rejoice-app/README.md
