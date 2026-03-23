@@ -5,9 +5,12 @@ PROJECT="my-stuff-ai"
 SERVICE="rejoice-docs-mcp"
 REGION="us-central1"
 
+REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+
 echo "Deploying MCP server to Cloud Run..."
 gcloud run deploy "$SERVICE" \
-  --source=.. \
+  --source="$REPO_ROOT" \
+  --clear-base-image \
   --project="$PROJECT" \
   --region="$REGION" \
   --port=8080 \
