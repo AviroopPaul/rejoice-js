@@ -7,6 +7,10 @@ on:
         description: "Version to publish, for example 0.1.1"
         required: true
         type: string
+      release_notes:
+        description: "Release notes (markdown). Leave empty to auto-generate from commits since last tag."
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -21,6 +25,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
+          fetch-depth: 0
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -94,6 +99,28 @@ jobs:
           fi
           git push origin "v${{ inputs.version }}"
 
+      - name: Build release notes
+        id: notes
+        run: |
+          if [ -n "$RELEASE_NOTES_INPUT" ]; then
+            printf '%s' "$RELEASE_NOTES_INPUT" > /tmp/release-notes.md
+          else
+            PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+            if [ -n "$PREV_TAG" ]; then
+              RANGE="${PREV_TAG}..HEAD"
+            else
+              RANGE="HEAD"
+            fi
+            {
+              echo "## What's Changed"
+              echo ""
+              git log "$RANGE" --pretty=format:"- %s (%h)" --no-merges
+              echo ""
+            } > /tmp/release-notes.md
+          fi
+        env:
+          RELEASE_NOTES_INPUT: ${{ inputs.release_notes }}
+
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
@@ -103,5 +130,5 @@ jobs:
           else
             gh release create "v${{ inputs.version }}" \
               --title "v${{ inputs.version }}" \
-              --notes "Published rejoice-js and create-rejoice-app version ${{ inputs.version }}."
+              --notes-file /tmp/release-notes.md
           fi
