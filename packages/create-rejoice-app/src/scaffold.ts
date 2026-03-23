@@ -49,7 +49,14 @@ export async function scaffold(choices: UserChoices, targetDir: string): Promise
     await fs.move(gitignorePath, dotGitignorePath, { overwrite: true });
   }
 
-  // 6. Remove router files if not selected
+  // 6. Create CLAUDE.md as a symlink to AGENTS.md
+  const agentsMdPath = path.join(targetDir, "AGENTS.md");
+  const claudeMdPath = path.join(targetDir, "CLAUDE.md");
+  if (await fs.pathExists(agentsMdPath)) {
+    await fs.symlink("AGENTS.md", claudeMdPath);
+  }
+
+  // 7. Remove router files if not selected
   if (!includeRouter) {
     const routerFiles = [
       path.join(targetDir, "src", "router.tsx"),
@@ -62,7 +69,7 @@ export async function scaffold(choices: UserChoices, targetDir: string): Promise
 
   logger.success("Template files created.");
 
-  // 7. Git init
+  // 8. Git init
   if (choices.initGit) {
     logger.step("Initializing git repository...");
     try {
