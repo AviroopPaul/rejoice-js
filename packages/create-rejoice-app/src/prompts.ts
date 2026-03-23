@@ -8,7 +8,16 @@ export interface UserChoices {
   initGit: boolean;
 }
 
-export async function gatherChoices(nameFromArg?: string): Promise<UserChoices> {
+export interface CliFlags {
+  router?: boolean;
+  theme?: "light" | "dark";
+  git?: boolean;
+}
+
+export async function gatherChoices(
+  nameFromArg?: string,
+  flags: CliFlags = {}
+): Promise<UserChoices> {
   const questions: prompts.PromptObject[] = [];
 
   if (!nameFromArg) {
@@ -24,16 +33,19 @@ export async function gatherChoices(nameFromArg?: string): Promise<UserChoices> 
     });
   }
 
-  questions.push(
-    {
+  if (flags.router === undefined) {
+    questions.push({
       type: "toggle",
       name: "includeRouter",
       message: "Include React Router v6?",
       initial: true,
       active: "yes",
       inactive: "no",
-    },
-    {
+    });
+  }
+
+  if (flags.theme === undefined) {
+    questions.push({
       type: "select",
       name: "defaultTheme",
       message: "Default theme:",
@@ -42,28 +54,34 @@ export async function gatherChoices(nameFromArg?: string): Promise<UserChoices> 
         { title: "Dark", value: "dark" },
       ],
       initial: 0,
-    },
-    {
+    });
+  }
+
+  if (flags.git === undefined) {
+    questions.push({
       type: "toggle",
       name: "initGit",
       message: "Initialize git repository?",
       initial: true,
       active: "yes",
       inactive: "no",
-    }
-  );
+    });
+  }
 
-  const answers = await prompts(questions, {
-    onCancel: () => {
-      console.log("\nCancelled.");
-      process.exit(0);
-    },
-  });
+  const answers =
+    questions.length > 0
+      ? await prompts(questions, {
+          onCancel: () => {
+            console.log("\nCancelled.");
+            process.exit(0);
+          },
+        })
+      : {};
 
   return {
     projectName: nameFromArg ?? answers.projectName,
-    includeRouter: answers.includeRouter ?? true,
-    defaultTheme: answers.defaultTheme ?? "light",
-    initGit: answers.initGit ?? true,
+    includeRouter: flags.router ?? answers.includeRouter ?? true,
+    defaultTheme: flags.theme ?? answers.defaultTheme ?? "light",
+    initGit: flags.git ?? answers.initGit ?? true,
   };
 }

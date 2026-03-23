@@ -514,6 +514,12 @@ cd my-app
 bun install && bun dev
 ```
 
+**Non-interactive (for agents/CI):**
+```bash
+bunx create-rejoice-app my-app --router --theme light --git
+```
+Flags: `--router`/`--no-router`, `--theme light|dark`, `--git`/`--no-git`. When all flags + name are provided, no prompts are shown.
+
 **Single import surface:**
 ```tsx
 import {{ Button, useTheme, styled, create, useState }} from "rejoice-js";

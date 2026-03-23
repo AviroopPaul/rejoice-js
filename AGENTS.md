@@ -4,7 +4,7 @@
 
 - This repo is a `pnpm` + Turbo monorepo for a batteries-included React agent package.
 - `packages/rejoice` publishes `rejoice-js`, a React-facing library that re-exports React primitives plus an opinionated stack: Ant Design, styled-components, Zustand, JSX runtime helpers, and a built-in light/dark theme provider.
-- `packages/create-rejoice-app` publishes `create-rejoice-app`, a CLI scaffolder that generates a TypeScript Vite app prewired to use `rejoice-js`, with optional router setup, default theme selection, package-manager choice, and optional git init.
+- `packages/create-rejoice-app` publishes `create-rejoice-app`, a CLI scaffolder that generates a TypeScript Vite app prewired to use `rejoice-js`, with optional router setup, default theme selection, and optional git init. All prompts can be skipped via CLI flags (`--router`/`--no-router`, `--theme light|dark`, `--git`/`--no-git`) for fully non-interactive use by agents and CI.
 - The intent of the repo is to give coding agents and developers a stable, preselected frontend surface so new apps can start without setup churn or library selection debates.
 
 ## Working expectations

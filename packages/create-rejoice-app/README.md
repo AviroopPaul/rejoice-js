@@ -28,7 +28,32 @@ You can also run it without arguments and answer the prompts:
 bunx create-rejoice-app
 ```
 
-## What the CLI asks for
+## CLI flags
+
+Every interactive prompt can be skipped with a flag, making the CLI fully non-interactive for AI agents and CI:
+
+```bash
+bunx create-rejoice-app my-app --router --theme dark --git
+```
+
+| Flag          | Description                       | Default |
+| ------------- | --------------------------------- | ------- |
+| `--router`    | Include React Router v6           | `true`  |
+| `--no-router` | Skip React Router                 | —       |
+| `--theme`     | Default theme (`light` or `dark`) | `light` |
+| `--git`       | Initialize a git repository       | `true`  |
+| `--no-git`    | Skip git init                     | —       |
+
+When all flags are provided along with the project name, no prompts are shown:
+
+```bash
+# Fully non-interactive — ideal for agents and scripts
+bunx create-rejoice-app my-app --no-router --theme light --no-git
+```
+
+## What the CLI asks for (interactive mode)
+
+When flags are omitted, the CLI prompts for:
 
 - project name
 - whether to include React Router v6

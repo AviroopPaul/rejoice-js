@@ -39,6 +39,20 @@ bunx create-rejoice-app my-app
 bunx create-rejoice-app         # interactive prompts
 ```
 
+Every prompt can be skipped with CLI flags for non-interactive use (agents, CI):
+
+```bash
+bunx create-rejoice-app my-app --router --theme dark --git
+```
+
+| Flag          | Description                       | Default |
+| ------------- | --------------------------------- | ------- |
+| `--router`    | Include React Router v6           | `true`  |
+| `--no-router` | Skip React Router                 | —       |
+| `--theme`     | Default theme (`light` or `dark`) | `light` |
+| `--git`       | Initialize a git repository       | `true`  |
+| `--no-git`    | Skip git init                     | —       |
+
 ### In your app
 
 ```tsx

@@ -1,13 +1,42 @@
 import path from "path";
 import chalk from "chalk";
-import { gatherChoices } from "./prompts.js";
+import { gatherChoices, type CliFlags } from "./prompts.js";
 import { scaffold } from "./scaffold.js";
 import { logger } from "./logger.js";
 import { validateProjectName } from "./validate.js";
 
+function parseArgs(argv: string[]): { nameArg?: string; flags: CliFlags } {
+  const flags: CliFlags = {};
+  let nameArg: string | undefined;
+
+  for (let i = 0; i < argv.length; i++) {
+    const arg = argv[i];
+
+    if (arg === "--router") {
+      flags.router = true;
+    } else if (arg === "--no-router") {
+      flags.router = false;
+    } else if (arg === "--theme") {
+      const val = argv[++i];
+      if (val !== "light" && val !== "dark") {
+        logger.error(`Invalid --theme value: "${val}". Must be "light" or "dark".`);
+        process.exit(1);
+      }
+      flags.theme = val;
+    } else if (arg === "--git") {
+      flags.git = true;
+    } else if (arg === "--no-git") {
+      flags.git = false;
+    } else if (!arg.startsWith("-") && !nameArg) {
+      nameArg = arg;
+    }
+  }
+
+  return { nameArg, flags };
+}
+
 async function main() {
-  const args = process.argv.slice(2);
-  const nameArg = args[0];
+  const { nameArg, flags } = parseArgs(process.argv.slice(2));
 
   console.log();
   logger.title("create-rejoice-app");
@@ -22,7 +51,7 @@ async function main() {
     }
   }
 
-  const choices = await gatherChoices(nameArg);
+  const choices = await gatherChoices(nameArg, flags);
   const targetDir = path.resolve(process.cwd(), choices.projectName);
 
   console.log();
