@@ -1,6 +1,6 @@
 {
   "name": "create-rejoice-app",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Scaffold a Bun-powered React app with rejoice-js, Ant Design, styled-components, Zustand, and built-in theming.",
   "type": "module",
   "scripts": {
