@@ -5,7 +5,7 @@
 A batteries-included React meta-framework. Scaffold a full Bun-powered project with [Ant Design 5](https://ant.design), [styled-components](https://styled-components.com), [Zustand](https://zustand-demo.pmnd.rs), [Lucide Icons](https://lucide.dev), and dark/light mode — all wired and working from the first line.
 
 ```bash
-bunx create-rejoice-app my-app
+bunx create-rejoice-app@latest my-app
 cd my-app
 bun install && bun dev
 ```
@@ -34,15 +34,15 @@ bun install && bun dev
 ### Scaffolding
 
 ```bash
-bunx create-rejoice-app my-app
+bunx create-rejoice-app@latest my-app
 # or
-bunx create-rejoice-app         # interactive prompts
+bunx create-rejoice-app@latest         # interactive prompts
 ```
 
 Every prompt can be skipped with CLI flags for non-interactive use (agents, CI):
 
 ```bash
-bunx create-rejoice-app my-app --router --theme dark --git
+bunx create-rejoice-app@latest my-app --router --theme dark --git
 ```
 
 | Flag          | Description                       | Default |
