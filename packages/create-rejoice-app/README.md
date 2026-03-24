@@ -16,7 +16,7 @@ The generated app comes prewired with:
 ## Quick start
 
 ```bash
-bunx create-rejoice-app my-app
+bunx create-rejoice-app@latest my-app
 cd my-app
 bun install
 bun dev
@@ -25,7 +25,7 @@ bun dev
 You can also run it without arguments and answer the prompts:
 
 ```bash
-bunx create-rejoice-app
+bunx create-rejoice-app@latest
 ```
 
 ## CLI flags
@@ -33,7 +33,7 @@ bunx create-rejoice-app
 Every interactive prompt can be skipped with a flag, making the CLI fully non-interactive for AI agents and CI:
 
 ```bash
-bunx create-rejoice-app my-app --router --theme dark --git
+bunx create-rejoice-app@latest my-app --router --theme dark --git
 ```
 
 | Flag          | Description                       | Default |
@@ -48,7 +48,7 @@ When all flags are provided along with the project name, no prompts are shown:
 
 ```bash
 # Fully non-interactive — ideal for agents and scripts
-bunx create-rejoice-app my-app --no-router --theme light --no-git
+bunx create-rejoice-app@latest my-app --no-router --theme light --no-git
 ```
 
 ## What the CLI asks for (interactive mode)

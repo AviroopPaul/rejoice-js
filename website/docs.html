@@ -106,7 +106,7 @@
                 <span class="code-block-lang">terminal</span>
                 <button class="code-copy-btn" aria-label="Copy code">Copy</button>
               </div>
-              <pre><code>bunx create-rejoice-app my-app
+              <pre><code>bunx create-rejoice-app@latest my-app
 cd my-app
 bun install
 bun dev</code></pre>
@@ -131,41 +131,60 @@ bun dev</code></pre>
                 The scaffolder uses Bun as the default runtime and bundler.
               </p>
             </div>
-            <h3>CLI Options</h3>
-            <p>The interactive prompts ask for:</p>
+            <h3>CLI Flags</h3>
+            <p>
+              Every prompt can be skipped with a flag, making the CLI fully non-interactive for AI
+              agents and CI:
+            </p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">terminal</span>
+                <button class="code-copy-btn" aria-label="Copy code">Copy</button>
+              </div>
+              <pre><code>bunx create-rejoice-app@latest my-app --router --theme dark --git</code></pre>
+            </div>
             <div class="props-table-wrap">
               <table class="props-table">
                 <thead>
                   <tr>
-                    <th>Option</th>
+                    <th>Flag</th>
                     <th>Default</th>
                     <th>Description</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><code>Project name</code></td>
-                    <td>CLI argument or prompt</td>
-                    <td>Must be a valid npm package name</td>
-                  </tr>
-                  <tr>
-                    <td><code>Include React Router</code></td>
+                    <td><code>--router</code></td>
                     <td><code>true</code></td>
-                    <td>Adds <code>react-router-dom</code> v6 with sample routes</td>
+                    <td>Include React Router v6</td>
                   </tr>
                   <tr>
-                    <td><code>Default theme</code></td>
+                    <td><code>--no-router</code></td>
+                    <td>—</td>
+                    <td>Skip React Router</td>
+                  </tr>
+                  <tr>
+                    <td><code>--theme light|dark</code></td>
                     <td><code>"light"</code></td>
                     <td>Sets the initial theme for <code>RejoiceProvider</code></td>
                   </tr>
                   <tr>
-                    <td><code>Initialize git</code></td>
+                    <td><code>--git</code></td>
                     <td><code>true</code></td>
-                    <td>Runs <code>git init</code> with an initial commit</td>
+                    <td>Initialize a git repository</td>
+                  </tr>
+                  <tr>
+                    <td><code>--no-git</code></td>
+                    <td>—</td>
+                    <td>Skip git init</td>
                   </tr>
                 </tbody>
               </table>
             </div>
+            <p>
+              When all flags are provided along with the project name, no prompts are shown. Flags
+              not provided will fall back to interactive prompts.
+            </p>
           </section>
 
           <div class="divider"></div>

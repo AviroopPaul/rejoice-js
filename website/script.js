@@ -3,7 +3,7 @@ const copyBtn = document.getElementById("copyBtn");
 const copyLabel = document.getElementById("copyLabel");
 
 copyBtn.addEventListener("click", () => {
-  navigator.clipboard.writeText("bunx create-rejoice-app your_app_name").then(() => {
+  navigator.clipboard.writeText("bunx create-rejoice-app@latest your_app_name").then(() => {
     copyLabel.textContent = "Copied!";
     setTimeout(() => {
       copyLabel.textContent = "Copy";
